@@ -1,0 +1,31 @@
+.light-theme {
+  background-color: #D1D5DB;
+  --background-color: #F3F4F6;
+  --text-color: #374151;
+  --selected-color: #374151;
+  --hover-background-color: #D1D5DB;
+  --hover-color: #374151;
+  --border-color: #D1D5DB;
+}
+
+.dark-theme { 
+  background-color: #D1D5DB;
+  --background-color: #111827;
+  --text-color: #9CA3AF;
+  --hover-background-color: #374151;
+  --selected-color:  #E5E7EB;
+  --hover-color: #E5E7EB;
+  --border-color: #D1D5DB;
+}
+
+.blue-theme {
+  background-color: #D1D5DB;
+  --background-color: #312E81;
+  --selected-color: #E0E7FF;
+  --text-color: #A5B4FC;
+  --hover-background-color: #4338CA;
+  --hover-color:  #E5E7EB;
+  --border-color: #D1D5DB;
+}
+
+

@@ -1,0 +1,194 @@
+/* Base button style */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  line-height: 1.5rem;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+  background: transparent;
+  position: relative; /* Needed for loading spinner positioning */
+  min-width: 5rem; /* Set a minimum width to maintain size */
+  min-height: 2.5rem; /* Set a minimum height to maintain size */
+}
+
+/* Size classes */
+.btn-small {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  min-width: 4rem; /* Adjusted for small buttons */
+  min-height: 2rem; /* Adjusted for small buttons */
+}
+
+.btn-normal {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  min-width: 5rem; /* Adjusted for normal buttons */
+  min-height: 2.5rem; /* Adjusted for normal buttons */
+}
+
+.btn-big {
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  min-width: 6rem; /* Adjusted for big buttons */
+  min-height: 3rem; /* Adjusted for big buttons */
+}
+
+/* Default button style */
+.btn-default {
+  color: #333;
+  background-color: #f5f5f5;
+  border-color: #d9d9d9;
+}
+
+.btn-default:hover {
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+.btn-default:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(170, 170, 170, 0.5); /* Gray focus outline */
+}
+
+/* Primary button style */
+.btn-primary {
+  color: #fff;
+  background-color: #1890ff;
+  border-color: #1890ff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .12);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, .045);
+}
+
+.btn-primary:hover {
+  background-color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.btn-primary:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.5); /* Blue focus outline */
+}
+
+/* Success button style */
+.btn-success {
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+
+.btn-success:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.5); /* Green focus outline */
+}
+
+/* Warning button style */
+.btn-warning {
+  color: #fff;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-warning:hover {
+  background-color: #ffca2c;
+  border-color: #ffca2c;
+}
+
+.btn-warning:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.5); /* Yellow focus outline */
+}
+
+/* Danger button style */
+.btn-danger {
+  color: #fff;
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #e4606d;
+  border-color: #e4606d;
+}
+
+.btn-danger:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.5); /* Red focus outline */
+}
+
+/* Icon styles */
+.icon {
+  display: inline-block; /* Visible by default */
+  font-size: 1rem; /* Icon size */
+  margin: 0 0.5rem; /* Space around the icon */
+  color: currentColor; /* Inherit color from the button */
+}
+
+.left-icon {
+  order: -1; /* Place before text */
+}
+
+.right-icon {
+  order: 1; /* Place after text */
+}
+
+/* Show icon if specified */
+.btn[data-icon="left"] .left-icon {
+  display: inline-block;
+}
+
+.btn[data-icon="right"] .right-icon {
+  display: inline-block;
+}
+
+/* Loading state styles */
+.btn[data-loading="true"] {
+  pointer-events: none; /* Make button unclickable */
+  opacity: 0.6; /* Visual indication of loading state */
+  position: relative;
+}
+
+.btn[data-loading="true"] .icon {
+  visibility: hidden; /* Hide icon during loading */
+}
+
+.btn[data-loading="true"] .btn-text {
+  visibility: hidden; /* Hide text during loading */
+  color: transparent; /* Make text color transparent to maintain space */
+}
+
+.btn[data-loading="true"] .loading-spinner {
+  display: inline-block;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 1rem; /* Adjusted size for spinner */
+  height: 1rem; /* Adjusted size for spinner */
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+}
+
+.loading-spinner {
+  display: none; /* Hidden by default */
+  width: 1rem; /* Adjusted size for spinner */
+  height: 1rem; /* Adjusted size for spinner */
+}
+
+/* Spinner animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

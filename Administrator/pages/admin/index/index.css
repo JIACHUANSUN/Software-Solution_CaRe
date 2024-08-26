@@ -1,0 +1,384 @@
+.home-page {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+}
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .25rem;
+  justify-content: space-between; /* Even spacing between cards */
+  padding: .25rem;           /* Padding around the container */
+  margin: 0 auto;
+}
+
+.w-4 {
+  max-width: calc(25% - .25rem);
+}
+
+.w-2 {
+  max-width: calc(25% - .25rem);
+}
+
+
+.w-1 {
+  max-width: calc(75% - .25rem);
+  margin-left: .25rem;
+}
+
+.card-10 {
+  height: 10rem;
+}
+
+.left-part {
+  flex: 0 0 30%;       /* Fixed at 30% width, doesn't grow or shrink */
+  display: flex;       /* Use Flexbox to align items inside this part */
+  flex-direction: column; /* Stack span and div vertically */
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
+  padding: 10px;       /* Padding around the content */
+  background-color: #f8f9fa; /* Optional: Background color for visual separation */
+  box-sizing: border-box; /* Include padding in the width */
+}
+
+.right-part {
+  flex: 1;             /* Take the remaining space */
+  padding: 10px;       /* Padding around the content */
+  background-color: #ffffff; /* Optional: Background color for visual separation */
+  box-sizing: border-box; /* Include padding in the width */
+  overflow: hidden;    /* Prevent overflow */
+}
+
+.progress-bar-container {
+  width: 100%;
+}
+
+.progress-bar {
+  background-color: #f0f0f0; /* Light gray background for progress bar */
+  border-radius: 0.25rem; /* Rounded corners for progress bar */
+  position: relative;
+  height: 0.5rem; /* Height of the progress bar */
+}
+
+.progress {
+  background-color: #1abc9c; /* Teal color for the filled portion */
+  height: 100%;
+  border-radius: 0.25rem;
+}
+
+.target-indicator {
+  position: absolute;
+  top: -0.25rem;
+  height: 1rem;
+  width: 0.2rem;
+  background-color: #1abc9c; /* Blue color for the target indicator */
+}
+
+.detail {
+  text-align: left; /* Align text to the left */
+  flex: 1; /* Make each detail item take up equal space */
+}
+
+.schedule-container {
+  margin-top: .25rem;
+  display: flex;
+  gap: .25rem;
+  justify-content: space-between;
+  width: calc(100% - .25rem);         /* Make sure the container takes full width */
+}
+
+.left-section {
+  width: calc(75% - 1 rem);  /* Take 3 parts of the available space */
+  background-color: #ffffff; /* White background for content clarity */
+  border-radius: 0.5rem; /* Rounded corners for a softer look */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  padding: 1rem;       /* Padding inside the left section */
+  flex: auto;
+}
+
+.right-section {
+  max-width: calc(25% - 1rem);
+  background-color: #ffffff; /* White background for content clarity */
+  border-radius: 0.5rem; /* Rounded corners for a softer look */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  padding: 1rem;       /* Padding inside the right section */
+  flex: auto;
+}
+
+.schedule-area {
+  width: 100%;
+  display: flex;
+}
+
+.calendar-container {
+  display: grid;
+  width: 100%;
+  flex: 1;
+  grid-template-columns: repeat(7, 1fr); /* 7列的网格 */
+  gap: 0.5rem; /* 网格之间的间距 */
+  padding: 1rem;
+}
+
+.month-placeholder {
+  grid-column: span 1; /* 占据前两列 */
+}
+
+.calendar-month {
+  grid-column: span 1; /* 占据剩余的5列 */
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: left; /* 左对齐 */
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day {
+  width: 100%;
+  height: 2rem;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+.calendar-day.selected {
+  background-color: #a0a0a0; /* 选中的日期 */
+}
+
+
+.card-header-container {
+  display: flex;
+  width: 100%; /* Ensures the container takes full width */
+  position: relative; /* Enables positioning of the second header */
+}
+
+.todo-list {
+  flex: 1;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  scrollbar-color: #4A90E2 #f8f9fa;
+  scrollbar-width: thin; /* For Firefox */
+  max-height: 210px; /* Set maximum height for scrolling */
+  overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.todo-list::-webkit-scrollbar {
+  width: 8px; /* Narrow scrollbar */
+}
+
+.todo-list::-webkit-scrollbar-track {
+  background: transparent; /* Track color */
+  border-radius: 4px; /* Rounded track edges */
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background-color: #4A90E2; /* Thumb color matching design */
+  border-radius: 4px; /* Rounded thumb edges */
+  visibility: hidden; /* Hide scrollbar thumb initially */
+}
+
+.todo-list:hover::-webkit-scrollbar-thumb {
+  visibility: visible; /* Show scrollbar thumb on hover */
+}
+
+.todo-item {
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  color: #333;
+  font-size: 0.875rem;
+}
+
+.todo-item:last-child {
+  margin-bottom: 0;
+}
+
+.todo-task {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.todo-info {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.todo-item.red {
+  background-color: #ffdddd;
+  border-left: 4px solid #e74c3c;
+}
+
+.todo-item.yellow {
+  background-color: #fff4cc;
+  border-left: 4px solid #f1c40f;
+}
+
+.todo-item.green {
+  background-color: #ddffdd;
+  border-left: 4px solid #2ecc71;
+}
+
+.activity-container {
+  margin-top: .25rem;
+  display: flex;
+  flex-wrap: wrap; /* To allow wrapping when screen width is less than 1366px */
+  gap: .25rem; /* Space between left and right parts */
+  width: calc(100% - .25rem); 
+}
+
+.activity-left, .activity-right {
+  background-color: #f8f9fa; /* Light background for contrast */
+  border: 1px solid #e0e0e0; /* Border to match card design */
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.activity-left {
+  flex: 2; /* Take 2/3 of the space */
+  min-width: 300px; /* Minimum width to ensure readability */
+}
+
+.activity-right {
+  flex: 1; /* Take 1/3 of the space */
+  min-width: 300px; /* Minimum width to ensure readability */
+}
+
+.date {
+  color: #999; /* Light grey color for date to distinguish from the main title */
+  font-size: 1rem; /* Slightly smaller size for the date */
+}
+
+
+.patient-list {
+  width: 100%;
+  height: 265px; /* Set a fixed height for the scrolling container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #4A90E2 #f8f9fa; /* Thumb color and track color for Firefox */
+}
+
+.patient-list::-webkit-scrollbar {
+  width: 8px; /* Narrow scrollbar */
+}
+
+.patient-list::-webkit-scrollbar-track {
+  background: transparent; /* Track color */
+  border-radius: 4px; /* Rounded track edges */
+}
+
+.patient-list::-webkit-scrollbar-thumb {
+  background-color: #4A90E2; /* Thumb color matching design */
+  border-radius: 4px; /* Rounded thumb edges */
+  visibility: hidden; /* Hide scrollbar thumb initially */
+}
+
+.patient-list:hover::-webkit-scrollbar-thumb {
+  visibility: visible; /* Show scrollbar thumb on hover */
+}
+
+
+.patient-card {
+  background-color: #fff;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.patient-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.patient-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.patient-photo {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
+.patient-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.patient-details {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem; /* Space between items */
+}
+
+.patient-info-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.patient-info {
+  font-size: 0.875rem;
+  color: #333;
+  margin-bottom: 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+}
+
+.patient-info strong {
+  color: #555;
+  margin-right: 0.25rem;
+}
+
+/* Responsive styles */
+@media (max-width: 1366px) {
+  .activity-left, .activity-right {
+      flex: 1 1 100%; /* Each part takes full width */
+  }
+}
+
+
+
+@media(max-width: 1360px) {
+
+  .schedule-container {
+    display: block;
+  }
+
+  .w-4 {
+    max-width: calc(50% - .25rem);
+  }
+
+  .w-1 {
+    max-width: calc(100% - .25rem);
+  }
+
+  .w-2 {
+    max-width: calc(100% - 1rem);
+  }
+}
+
+@media(max-width: 600px) {
+  .w-4 {
+    max-width: calc(100% - 1rem);
+  }
+}

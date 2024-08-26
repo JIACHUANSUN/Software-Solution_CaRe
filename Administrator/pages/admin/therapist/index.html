@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Therapist</title>
+  <link href="/components/table/index.css" rel="stylesheet">
+  <link href="/components/input/index.css" rel="stylesheet">
+  <link href="/components/button/index.css" rel="stylesheet">
+  <link href="/components/modal/index.css" rel="stylesheet">
+  <link href="/components/form/index.css" rel="stylesheet">
+</head>
+<body>
+  <div class="therapist-page">
+    <div style="display: flex; gap: 1rem;">
+    <div class="input-search input-affix-wrapper">
+      <input type="text" class="input">
+      <span class="input-suffix">
+          <i aria-label="icon: search" tabindex="-1" class="icon input-search-icon">
+              <!-- Search Icon SVG -->
+              <svg viewBox="64 64 896 896" data-icon="search" width="1em" height="1em" fill="currentColor" aria-hidden="true" focusable="false" class="">
+                  <path d="M909.6 854.5L649.9 594.8C690.2 542.7 712 479 712 412c0-80.2-31.3-155.4-87.9-212.1-56.6-56.7-132-87.9-212.1-87.9s-155.5 31.3-212.1 87.9C143.2 256.5 112 331.8 112 412c0 80.1 31.3 155.5 87.9 212.1C256.5 680.8 331.8 712 412 712c67 0 130.6-21.8 182.7-62l259.7 259.6a8.2 8.2 0 0 0 11.6 0l43.6-43.5a8.2 8.2 0 0 0 0-11.6zM570.4 570.4C528 612.7 471.8 636 412 636s-116-23.3-158.4-65.6C211.3 528 188 471.8 188 412s23.3-116.1 65.6-158.4C296 211.3 352.2 188 412 188s116.1 23.2 158.4 65.6S636 352.2 636 412s-23.3 116.1-65.6 158.4z"></path>
+              </svg>
+          </i>
+      </span>
+    </div>
+    <button id="openModalButton" class="btn btn-primary btn-small" data-icon="left" data-loading="false">
+      <span class="btn-text">New</span>
+      <span class="loading-spinner"></span>
+    </button>
+    </div>
+
+  
+  <div id="table-container" style="margin-top: 1rem;"></div>
+  </div>
+
+  <!-- Modal Structure -->
+<!-- <div class="modal-mask"></div>
+<div class="modal-wrap" role="dialog" aria-labelledby="modalTitle">
+    <div class="modal" role="document">
+        <button type="button" aria-label="Close" class="modal-close">
+            <span class="modal-close-icon">&times;</span>
+        </button>
+        <div class="modal-header">
+            <div class="modal-title" id="modalTitle">Default Title</div>
+        </div>
+        <div class="modal-body">
+            <p>Default content...</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-default" type="button">Cancel</button>
+            <button class="btn btn-primary" type="button">OK</button>
+        </div>
+    </div>
+</div> -->
+
+  <script src="/components/table/index.js"></script>
+  <script src="/components/modal/index.js"></script>
+  <script src="index.js"></script>
+  <script>
+    // Function to set loading state
+function setLoadingState(button, isLoading) {
+    if (isLoading) {
+        button.setAttribute('data-loading', 'true');
+        button.querySelector('.loading-spinner').style.display = 'inline-block';
+    } else {
+        button.setAttribute('data-loading', 'false');
+        button.querySelector('.loading-spinner').style.display = 'none';
+    }
+}
+
+// Example usage
+const btn = document.querySelector('.btn-primary');
+btn.addEventListener('click', () => {
+    setLoadingState(btn, true);
+
+    // Simulate an async operation
+    setTimeout(() => {
+        setLoadingState(btn, false);
+    }, 2000); // 2 seconds loading time
+});
+
+const modalName = 'modal1';
+
+const modal1 = new Modal(modalName);
+
+const formHTML = `
+<form id="staffForm-${modalName}" class="staff-form" autocomplete="off">
+    <div class="form-group">
+        <label for="photo">Photo:</label>
+        <div class="file-upload-container">
+            <label for="file-upload-${modalName}" class="custom-file-upload">
+                <span>📤 Click to Upload</span>
+                <input type="file" style='display: none' id="file-upload-${modalName}" accept="image/*">
+            </label>
+            <div class="file-info">
+                <span id="file-name-${modalName}" class="file-name"></span>
+                <span id="delete-file-${modalName}" class="delete-file" style="display:none;">🗑️</span>
+            </div>
+            <div id="image-preview-${modalName}" class="image-preview"></div>
+        </div>
+        <div class="error-message">Please upload a photo</div> <!-- Error message for photo -->
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name-${modalName}" name="name" autocomplete="off" placeholder="Enter name" class="form-input" required>
+        <div class="error-message">Please input name</div> <!-- Error message for name -->
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email-${modalName}" name="email" autocomplete="off" placeholder="Enter email" class="form-input" required>
+        <div class="error-message">Please input a valid email</div> <!-- Error message for email -->
+    </div>
+
+    <div class="form-group">
+        <label for="group">Group:</label>
+        <select id="group-${modalName}" name="group" class="form-input dropdown" required>
+            <option value="">Select a group</option>
+            <option value="Expert group">Expert group</option>
+            <option value="Research team">Research team</option>
+            <!-- Add more group options as needed -->
+        </select>
+        <div class="error-message">Please select a group</div> <!-- Error message for group -->
+    </div>
+
+    <div class="form-group">
+        <label for="field">Professional Field:</label>
+        <select id="field-${modalName}" name="field" class="form-input dropdown" required>
+            <option value="">Select a professional field</option>
+            <option value="Early intervention records">Early intervention records</option>
+            <option value="Therapeutic practices">Therapeutic practices</option>
+            <!-- Add more field options as needed -->
+        </select>
+        <div class="error-message">Please select a professional field</div> <!-- Error message for field -->
+    </div>
+</form>
+`;
+
+
+document.getElementById('openModalButton').addEventListener('click', () => {
+    modal1.show(
+        {
+            title: 'Add New Staff',
+            content: formHTML,
+            okText: 'Save',
+            cancelText: 'Cancel'
+        },
+        (event) => {
+            event.preventDefault();
+            validation(modalName);
+        },
+        () => console.log('Modal 1 Cancel clicked')
+    );
+    
+    const fileInput = document.getElementById(`file-upload-${modalName}`);
+    const fileNameSpan = document.getElementById(`file-name-${modalName}`);
+    const deleteFileBtn = document.getElementById(`delete-file-${modalName}`);
+    const imagePreview = document.getElementById(`image-preview-${modalName}`);
+
+    // Attach event listeners with a reference to clean up later
+    fileInput.addEventListener('change', handleFileChange);
+    fileNameSpan.addEventListener('mouseover', showImagePreview);
+    fileNameSpan.addEventListener('mouseout', hideImagePreview);
+    deleteFileBtn.addEventListener('click', deleteFile);
+
+    function handleFileChange() {
+        const file = fileInput.files[0];
+        if (file) {
+            fileNameSpan.textContent = file.name;
+            fileNameSpan.style.display = 'inline';
+            deleteFileBtn.style.display = 'inline';
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.innerHTML = `<img src="${e.target.result}" alt="Image Preview">`;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function showImagePreview() {
+        if (imagePreview.innerHTML) {
+            imagePreview.style.display = 'block';
+
+        }
+    }
+
+    function hideImagePreview() {
+        imagePreview.style.display = 'none';
+    }
+
+    function deleteFile() {
+        fileInput.value = ''; // Clear the input
+        fileNameSpan.textContent = '';
+        deleteFileBtn.style.display = 'none';
+        imagePreview.style.display = 'none';
+        imagePreview.innerHTML = '';
+    }
+
+    function cleanupModal(modalName) {
+        // Remove event listeners
+        fileInput.removeEventListener('change', handleFileChange);
+        fileNameSpan.removeEventListener('mouseover', showImagePreview);
+        fileNameSpan.removeEventListener('mouseout', hideImagePreview);
+        deleteFileBtn.removeEventListener('click', deleteFile);
+
+        // Remove HTML content
+        const container = document.getElementById(`upload-container-${modalName}`);
+        if (container) {
+            container.parentElement.removeChild(container);
+        }
+    }
+
+    
+});
+
+function validation(modalName) {
+    // Elements to validate
+    const nameInput = document.getElementById('name-' + modalName);
+    const emailInput = document.getElementById('email-' + modalName);
+    const groupSelect = document.getElementById('group-' + modalName);
+    const fieldSelect = document.getElementById('field-' + modalName);
+
+    // Reset error state
+    const formGroups = document.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        group.classList.remove('error');
+    });
+
+    let isValid = true;
+
+    // Validation
+    if (!nameInput.value.trim()) {
+        setError(nameInput, 'Please input name');
+        isValid = false;
+    }
+
+    if (!validateEmail(emailInput.value)) {
+        setError(emailInput, 'Please input a valid email');
+        isValid = false;
+    }
+
+    if (groupSelect.value === "") {
+        setError(groupSelect, 'Please select a group');
+        isValid = false;
+    }
+
+    if (fieldSelect.value === "") {
+        setError(fieldSelect, 'Please select a professional field');
+        isValid = false;
+    }
+    return isValid;
+}
+
+function removeErrorOnInput(element) {
+    element.addEventListener('input', function () {
+        const formGroup = element.closest('.form-group');
+        if (formGroup.classList.contains('error')) {
+            formGroup.classList.remove('error');
+            formGroup.querySelector('.error-message').textContent = '';
+        }
+    });
+}
+
+function setError(element, message) {
+    const formGroup = element.closest('.form-group');
+    formGroup.classList.add('error');
+    formGroup.querySelector('.error-message').textContent = message;
+}
+
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+  </script>
+</body>
+</html>
