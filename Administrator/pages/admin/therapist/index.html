@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Therapist</title>
+  <link href="index.css" rel="stylesheet">
   <link href="/components/table/index.css" rel="stylesheet">
   <link href="/components/input/index.css" rel="stylesheet">
   <link href="/components/button/index.css" rel="stylesheet">
   <link href="/components/modal/index.css" rel="stylesheet">
   <link href="/components/form/index.css" rel="stylesheet">
+  <link href="/components/pagination/index.css" rel="stylesheet">
 </head>
 <body>
   <div class="therapist-page">
@@ -33,30 +35,13 @@
   
   <div id="table-container" style="margin-top: 1rem;"></div>
   </div>
-
-  <!-- Modal Structure -->
-<!-- <div class="modal-mask"></div>
-<div class="modal-wrap" role="dialog" aria-labelledby="modalTitle">
-    <div class="modal" role="document">
-        <button type="button" aria-label="Close" class="modal-close">
-            <span class="modal-close-icon">&times;</span>
-        </button>
-        <div class="modal-header">
-            <div class="modal-title" id="modalTitle">Default Title</div>
-        </div>
-        <div class="modal-body">
-            <p>Default content...</p>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-default" type="button">Cancel</button>
-            <button class="btn btn-primary" type="button">OK</button>
-        </div>
-    </div>
-</div> -->
+  <div id="pagination-container"></div>
 
   <script src="/components/table/index.js"></script>
   <script src="/components/modal/index.js"></script>
+  <script src="/components/pagination/index.js"></script>
   <script src="index.js"></script>
+  
   <script>
     // Function to set loading state
 function setLoadingState(button, isLoading) {

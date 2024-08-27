@@ -42,3 +42,25 @@ for (let i = 0; i < 55; i++) {
 }
 
 document.getElementById('table-container').appendChild(createTable(columns, doctors));
+
+// Example of how to initialize and use the Pagination component
+const pagination = new Pagination({
+    totalPages: 5,
+    containerId: "pagination-container",
+    currentPage: 1,
+    onPageChange: (page) => {
+        console.log('Page changed to:', page);
+        // Your logic to fetch new data based on the current page
+    }
+});
+
+// Update pagination dynamically (e.g., after fetching data)
+function updatePagination(totalPages) {
+    pagination.config.totalPages = totalPages;
+    pagination.update(1); // Reset to first page
+}
+
+// Example usage of updating pagination dynamically
+setTimeout(() => {
+    updatePagination(10); // Simulate updating pagination after fetching new data
+}, 2000);

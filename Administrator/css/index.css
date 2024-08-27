@@ -46,7 +46,7 @@ body {
 
 iframe {
   width: 100%;  /* Full width of the parent */
-  height: calc(100% - 1rem); /* Full height of the parent */
+  height: calc(100% - 2rem); /* Full height of the parent */
   border: none; /* No borders */
   box-sizing: border-box; /* Include padding and borders in the element's total width and height */
   margin-top: 10px; /* Optional: Add margin to create space at the top */
