@@ -191,8 +191,8 @@ nav ul {
   align-items: center;
   bottom: 0;
   background-color: #fff;
-  height: 3rem; /* 48px */
-  min-height: 3rem; /* Minimum height of 48px */
+  height: 2.9rem; /* 48px */
+  min-height: 2.9rem; /* Minimum height of 48px */
   padding: 0 1rem; /* Padding around the content */
   box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   position: absolute;
@@ -203,4 +203,550 @@ nav ul {
 .bottom-info span{
   cursor: pointer;
 }
+
+.content {
+  margin-left: 14rem;
+  height: 100%;
+}
+
+
+.statistic-area {
+  height: 8.5rem;
+  display: flex;
+  flex-wrap: wrap;  
+  gap: 5px;
+  background-color: transparent;
+  margin-top: 1.5rem;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  justify-content: space-between;
+}
+
+.statistic-item {
+  background-color: #fff;
+  border-radius: .5rem;
+  width: calc(25% - 1rem);
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  position: relative;
+  display: flex;
+}
+
+.statistic-item .progress {
+  height: 6rem;
+  width: 6rem;
+  min-width: 6rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.statistic-item .progress-value {
+  width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 50%;
+    background: conic-gradient(
+        #007bff calc(var(--percentage) * 1%), 
+        #a0a0a0 0%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-container {
+  height: 75%;
+  display: flex;
+  flex-direction: column;  
+  text-align: left;
+  gap: 1rem;
+}
+
+.status-container .title {
+  font-size: 1rem;
+  color: #8A92A6;
+}
+
+.status-container .number {
+  font-size: 1.25rem;
+  color: #232D42;
+}
+
+.status-container .rate {
+  font-size: 1.25rem;
+  color: #232D42;
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+}
+
+.rate .arrow {
+  width: 0;
+  height: 0;
+  border-left: .5rem solid transparent;
+  border-right: .5rem solid transparent;
+  border-bottom: .75rem solid #00a86b;
+}
+
+.rate .arrow.down {
+  width: 0;
+  height: 0;
+  border-left: .5rem solid transparent;
+  border-right: .5rem solid transparent;
+  border-bottom: .75rem solid #00a86b;
+  transform: rotate(180deg);
+}
+
+
+.progress-circle {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 50%;
+  background: conic-gradient(
+        #007bff calc(var(--percentage) * 3.6deg), /* Blue part */
+        #e0e0e0 calc(var(--percentage) * 3.6deg) /* Grey part */
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-circle.green{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 50%;
+  background: conic-gradient(
+        #08B1BA calc(var(--percentage) * 3.6deg), /* Blue part */
+        #e0e0e0 calc(var(--percentage) * 3.6deg) /* Grey part */
+    );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress-mask {
+  width: 90%;
+  height: 90%;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+
+.progress-mask .arrow-icon {
+  font-size: 2rem;
+  color: #007bff;
+}
+
+.text {
+  font-size: 14px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.value {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.percentage {
+  font-size: 14px;
+  color: #00a86b;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.triangle-up {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 8px solid #00a86b;
+  margin-left: 5px;
+}
+
+
+@media (max-width: 1520px) {
+  .statistic-item {
+    width: calc(50% - 1rem);
+    margin-bottom: 10px;
+  }
+}
+
+.charts-area {
+  height: calc(100vh - 16rem);
+  flex: 1;
+  display: flex;
+  gap: 5px;
+  background-color: #f7f7f7;
+  padding: 1rem 1.5rem 0 1.5rem;
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+@media (max-width: 1520px) {
+  .charts-area {
+    height: calc(100vh - 30rem);
+  }
+}
+
+.left-content {
+  flex: 2.8; /* Takes up 3 parts of the space */
+ 
+  display: flex;
+  flex-direction: column; /* Ensures content stacks vertically */
+  justify-content: space-between;
+  gap: 5px; /* Space between items within the left content */
+  height: 100%;
+}
+
+.chart-section {
+  background-color: #fff;
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
+  flex: 1; /* Grow equally within the parent */
+}
+
+.calendar-section {
+  background-color: transparent;
+  flex: 1; /* Grow equally within the parent */
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.calendar {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
+  flex: 1;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: bold;
+}
+
+.prev-month, .next-month {
+  border: none;
+  border-radius: 5px; /* Rounded button corners */
+  font-size: 1em;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.prev-month:hover, .next-month:hover {
+  background: #e0e0e0; /* Slightly darker on hover */
+}
+
+.calendar-body {
+  padding-top: 10px; /* Padding above days of week */
+}
+
+.calendar-weekdays, .calendar-dates {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 10px; /* Space between rows */
+}
+
+.calendar-weekdays div {
+  font-weight: bold;
+  color: #999; /* Lighter grey for weekdays */
+}
+
+.calendar-dates div {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%; /* Rounded date backgrounds */
+  transition: background-color 0.3s ease;
+}
+
+.calendar-dates div:hover {
+  background-color: #e4e4e4;
+}
+
+.calendar-dates .selected {
+  background-color: #4a90e2; /* Blue background for selected date */
+  color: white; /* White text on selected date */
+  border-radius: 50%; /* Rounded background */
+}
+
+.todo {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 0.5rem; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
+  flex: 1;
+}
+
+
+/* Optional: remove the margin from the last child to avoid extra spacing at the bottom */
+.left-content .chart-section:last-child {
+  margin-bottom: 0;
+}
+
+.right-content {
+  flex: 1.2; /* Takes up 1 part of the space */
+  border-radius: 0.5rem; /* Rounded corners */
+  display: flex;
+  flex-direction: column; /* Ensures content stacks vertically */
+  gap: 5px; /* Space between items within the right content */
+  height: 100%;
+}
+
+.diagnostic {
+  height: calc(100% - 5px);
+}
+
+.new-patient {
+  height: calc(100% - 23rem);
+}
+
+.diagnostic-chart {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  height: 100%;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  margin-top: .5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.section-period {
+  font-size: 0.9rem;
+  color: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.circular-chart {
+  position: relative;
+  width: 10rem;
+  height: 10rem;
+  margin: 1rem auto;
+}
+
+.circle-segment {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 8px solid #f0f0f0; /* Light background for the progress track */
+  box-sizing: border-box;
+}
+
+.segment-blue {
+  border-top-color: #007bff; /* Blue color for Insomnia */
+  transform: rotate(calc(var(--percentage) * 3.6deg)); /* Outer ring percentage */
+}
+
+.segment-cyan {
+  border-top-color: #00d4ff; /* Cyan color for Paranoea */
+  transform: rotate(calc(var(--percentage) * 3.6deg)); /* Inner ring percentage */
+  width: 80%; /* Adjust size for inner circle */
+  height: 80%; /* Adjust size for inner circle */
+  top: 10%; /* Center the inner circle */
+  left: 10%; /* Center the inner circle */
+}
+
+.chart-inner-circle {
+  width: 60%;
+  height: 60%;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Optional: Inner shadow */
+}
+
+.diagnostic-legend {
+  width: 60%;
+  margin-top: 1rem;
+  margin: 1rem auto;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.blue {
+  background-color: #007bff;
+}
+
+.cyan {
+  background-color: #00d4ff;
+}
+
+.legend-value {
+  color: #999;
+}
+
+.patient-list {
+  margin: 1rem auto;
+  width: 90%;
+  height: calc(100% - 4rem);
+  overflow-y: auto;
+}
+
+/* Custom Scrollbar Styling */
+.patient-list::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+.patient-list::-webkit-scrollbar-track {
+  background: transparent; /* Background of the scrollbar track */
+}
+
+.patient-list::-webkit-scrollbar-thumb {
+  background-color: #007bff; /* Blue color for the scrollbar handle */
+  border-radius: 10px; /* Rounded corners for the scrollbar handle */
+  visibility: hidden; /* Initially hidden */
+}
+
+/* Show scrollbar thumb only during scrolling */
+.patient-list:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+/* Optional: Scrollbar visibility while scrolling */
+.patient-list::-webkit-scrollbar-thumb:hover {
+  background-color: #0056b3; /* Darker blue when hovered */
+}
+
+.new-patients-section {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.patient-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.patient-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.patient-info {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.patient-id {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.patient-id a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.patient-group {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.patient-menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  fill: #333;
+  cursor: pointer;
+}
+
+.view-more {
+  position: absolute;
+  bottom: 3px;
+  width: 90%;
+  text-align: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: #999;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: auto; /* Pushes this element to the bottom of the container */
+}
+
+.view-more .dropdown-icon {
+  font-size: 0.7rem;
+}
+
+
 
