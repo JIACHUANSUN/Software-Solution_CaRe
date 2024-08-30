@@ -33,9 +33,133 @@
     </div>
 
   
-  <div id="table-container" style="margin-top: 1rem;"></div>
+  <div id="table-container" style="margin-top: 1rem;background-color: #fff;"></div>
   </div>
-  <div id="pagination-container"></div>
+  <div id="pagination-container" class="pagination"></div>
+
+  <!-- Modal Container -->
+<div id="therapistModal" class="custom-modal" style="width: 700px;"> <!-- Adjusted width to 700px for reasonable space -->
+    <div class="modal-header">
+        <h2 class="modal-title">Therapist Details</h2>
+        <button class="modal-close-btn" onclick="hideModal()">✖</button>
+    </div>
+    <div class="modal-body">
+        <form id="therapistForm" class="therapist-form" autocomplete="off">
+            <!-- Left Column for Profile Picture and Basic Info -->
+            <div class="left-column">
+                <!-- Profile Picture -->
+                <div class="form-group">
+                    <label for="photo">Photo:</label>
+                    <div style="display: flex; flex-direction: row; gap: 1rem;">
+                        <div class="file-upload-container" id="file-upload-container" style="flex: 1; position: relative; background-color: #f5f5f5;">
+                            <!-- Hidden file input -->
+                            <input type="file" id="file-upload" accept="image/*" style="display: none;">
+                            
+                            <!-- Clickable area for upload -->
+                            <div id="image-preview" class="image-preview" style="width: 100%; height: 100%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                <span class="upload-placeholder">📤 Click to Upload</span>
+                            </div>
+                        </div>
+                        
+                    <div style="display: flex; flex: 1; flex-direction: column; gap: 1rem;justify-content: flex-end;">
+                        <button type="button" class="btn btn-small" id="add-pic-btn">Add pic</button>
+                        <button type="button" class="btn btn-small" id="delete-pic-btn">Delete pic</button>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- ID (Read-Only) -->
+                <div class="form-group">
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id" class="form-input" value="001" readonly>
+                </div>
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Enter name">
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-input" placeholder="Enter email">
+                </div>
+
+                <!-- Professional Field -->
+                <div class="form-group">
+                    <label for="field">Professional Field:</label>
+                    <select id="field" name="field" class="form-input dropdown">
+                        <option value="">Select a professional field</option>
+                        <option value="Psychiatrist">Psychiatrist</option>
+                        <option value="Psychologist">Psychologist</option>
+                    </select>
+                </div>
+
+                <!-- Brief -->
+                <div class="form-group">
+                    <label for="brief">Brief:</label>
+                    <input type="text" id="brief" name="brief" class="form-input" placeholder="Enter brief">
+                </div>
+            </div>
+
+            <!-- Right Column for Certificates and Ownership -->
+            <div class="right-column">
+                <!-- Certificate Upload -->
+                <div class="certificate-container" style="height: 6rem;">
+                    <label for="certificate">Certificate:</label>
+                    <div class="certificate-upload" style="display: flex; flex-direction: row; height: 90%; gap: .25rem;">
+                        <div class="certificate-preview" style="flex: 6; position: relative; cursor: pointer;">
+                            <img src="/assets/doc0.jpeg" style="width: 100%; height: 100%; object-fit: cover;" alt="Certificate Preview" class="certificate-image" id="certificate-image">
+                            <input type="file" id="file-input" accept="image/*" style="display: none;">
+                        </div>
+                        <button style="flex: 1; height: 2.5rem;" type="button" class="btn btn-small">Add</button>
+                    </div>
+                </div>
+
+                <!-- Ownership Details -->
+                <div class="ownership-container">
+                    <label>Ownership</label>
+                    <div class="ownership-details">
+                        <!-- Example Group 1 -->
+                        <div class="group">
+                            <span class="group-name">Expert Group</span>
+                            <span class="group-info">: 18</span>
+                            <button type="button" class="btn btn-small">Delete</button>
+                            <div class="group-authority">
+                                <a href="#">View patient information</a>
+                                <a href="#">Edit patient data</a>
+                                <a href="#">Create a patient group</a>
+                            </div>
+                        </div>
+
+                        <!-- Example Group 2 -->
+                        <div class="group">
+                            <span class="group-name">Manager Group</span>
+                            <span class="group-info">: 18</span>
+                            <button type="button" class="btn btn-small">Delete</button>
+                            <div class="group-authority">
+                                <a href="#">View patient information</a>
+                                <a href="#">Edit patient data</a>
+                                <a href="#">Create a patient group</a>
+                                <a href="#">Management system Settings</a>
+                            </div>
+                        </div>
+
+                        <!-- Add New Group -->
+                        <button type="button" class="btn btn-small">Add</button>
+                    </div>
+                </div>
+                <!-- Save and Cancel Buttons -->
+                <div class="form-group buttons" style="display: flex; flex-direction: row;gap: 1rem;">
+                    <button type="button" class="btn btn-default">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
   <script src="/components/table/index.js"></script>
   <script src="/components/modal/index.js"></script>
@@ -43,27 +167,46 @@
   <script src="index.js"></script>
   
   <script>
-    // Function to set loading state
-function setLoadingState(button, isLoading) {
-    if (isLoading) {
-        button.setAttribute('data-loading', 'true');
-        button.querySelector('.loading-spinner').style.display = 'inline-block';
-    } else {
-        button.setAttribute('data-loading', 'false');
-        button.querySelector('.loading-spinner').style.display = 'none';
+
+// Get references to elements
+const fileUploadContainer = document.getElementById('file-upload-container');
+const imagePreview = document.getElementById('image-preview');
+const fileInput = document.getElementById('file-upload');
+
+// Trigger file input when clicking on the image preview area
+fileUploadContainer.addEventListener('click', () => {
+    fileInput.click();
+});
+
+// Handle file input change event
+fileInput.addEventListener('change', function () {
+    const file = fileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            // Set the uploaded image as the background of the file-upload-container
+            fileUploadContainer.style.backgroundImage = `url(${e.target.result})`;
+            fileUploadContainer.style.backgroundSize = 'cover';
+            fileUploadContainer.style.backgroundPosition = 'center';
+            fileUploadContainer.style.backgroundRepeat = 'no-repeat';
+            imagePreview.style.display = 'none'; // Hide the image preview area
+        };
+        reader.readAsDataURL(file);
     }
+});
+
+
+
+    // Function to show the modal
+function showModal1() {
+    document.getElementById('therapistModal').style.display = 'block';
 }
 
-// Example usage
-const btn = document.querySelector('.btn-primary');
-btn.addEventListener('click', () => {
-    setLoadingState(btn, true);
+// Function to hide the modal
+function hideModal() {
+    document.getElementById('therapistModal').style.display = 'none';
+}
 
-    // Simulate an async operation
-    setTimeout(() => {
-        setLoadingState(btn, false);
-    }, 2000); // 2 seconds loading time
-});
 
 const modalName = 'modal1';
 
@@ -123,8 +266,7 @@ const formHTML = `
 </form>
 `;
 
-
-document.getElementById('openModalButton').addEventListener('click', () => {
+function showModal() {
     modal1.show(
         {
             title: 'Add New Staff',
@@ -197,8 +339,10 @@ document.getElementById('openModalButton').addEventListener('click', () => {
             container.parentElement.removeChild(container);
         }
     }
+}
 
-    
+document.getElementById('openModalButton').addEventListener('click', () => {
+    showModal1();
 });
 
 function validation(modalName) {

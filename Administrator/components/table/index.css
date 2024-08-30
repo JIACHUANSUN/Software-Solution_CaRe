@@ -159,9 +159,9 @@
 
 .photo {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  width: 25px;
+  height: 25px;
+  border-radius: 12.5px;
   overflow: hidden;
   border-color: #1890ff;
   border-width: 1px;

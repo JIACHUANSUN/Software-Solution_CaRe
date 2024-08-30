@@ -27,7 +27,11 @@ const professionalFields = ['Early intervention records', 'Child psychology', 'G
 
 const doctors = [];
 
-for (let i = 0; i < 55; i++) {
+const testDoctorNum = 150;
+
+const tabContainer = document.getElementById('table-container');
+
+for (let i = 0; i < testDoctorNum; i++) {
     const doctor = {
         id: String(i + 1).padStart(3, '0'), // IDs from 001 to 055
         name: names[i],
@@ -41,26 +45,15 @@ for (let i = 0; i < 55; i++) {
     doctors.push(doctor);
 }
 
-document.getElementById('table-container').appendChild(createTable(columns, doctors));
+tabContainer.appendChild(createTable(columns, doctors.slice(0, 10)));
 
 // Example of how to initialize and use the Pagination component
 const pagination = new Pagination({
-    totalPages: 5,
+    totalPages: doctors.length / 10,
     containerId: "pagination-container",
     currentPage: 1,
     onPageChange: (page) => {
-        console.log('Page changed to:', page);
-        // Your logic to fetch new data based on the current page
+        tabContainer.innerHTML = '';
+        tabContainer.appendChild(createTable(columns, doctors.slice(page * 10, (page + 1) * 10)));
     }
 });
-
-// Update pagination dynamically (e.g., after fetching data)
-function updatePagination(totalPages) {
-    pagination.config.totalPages = totalPages;
-    pagination.update(1); // Reset to first page
-}
-
-// Example usage of updating pagination dynamically
-setTimeout(() => {
-    updatePagination(10); // Simulate updating pagination after fetching new data
-}, 2000);
