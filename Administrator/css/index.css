@@ -439,6 +439,9 @@ nav ul {
 .calendar {
   height: 100%;
   width: 100%;
+  font-size: .8rem;
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border-radius: 0.5rem; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
@@ -472,7 +475,10 @@ nav ul {
 }
 
 .calendar-body {
-  padding-top: 10px; /* Padding above days of week */
+  flex: 1;
+  padding: 5px; /* Padding above days of week */
+  display: flex;
+  flex-direction: column;
 }
 
 .calendar-weekdays, .calendar-dates {
@@ -480,6 +486,13 @@ nav ul {
   grid-template-columns: repeat(7, 1fr);
   text-align: center;
   margin-bottom: 10px; /* Space between rows */
+  font-size: 14px;
+}
+
+.calendar-dates{
+  flex: 1;
+  margin-bottom: 0px; /* Space between rows */
+  text-align: center;
 }
 
 .calendar-weekdays div {
@@ -488,14 +501,17 @@ nav ul {
 }
 
 .calendar-dates div {
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 50%; /* Rounded date backgrounds */
-  transition: background-color 0.3s ease;
+  pointer-events: none;
 }
 
-.calendar-dates div:hover {
-  background-color: #e4e4e4;
+.calendar-dates button {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin: 0 auto;
+  color: #202224;
+  background: none;
+  border: none;
+  font-family: 'Inter', sans-serif;
 }
 
 .calendar-dates .selected {
