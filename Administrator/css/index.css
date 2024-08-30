@@ -28,6 +28,7 @@ body {
 .nav-logo {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .logo {
@@ -181,3 +182,25 @@ nav ul {
 .menu-item.active .menu-arrow {
   color: #fff; /* Ensure icons and text are white for active state */
 }
+
+
+/* Bottom Info Bar */
+
+.bottom-info {
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  background-color: #fff;
+  height: 3rem; /* 48px */
+  min-height: 3rem; /* Minimum height of 48px */
+  padding: 0 1rem; /* Padding around the content */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  position: absolute;
+  width: calc(100% - 14rem - 2px);
+  right: 0;
+}
+
+.bottom-info span{
+  cursor: pointer;
+}
+
