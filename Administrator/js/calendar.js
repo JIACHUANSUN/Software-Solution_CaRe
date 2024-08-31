@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function () {
       currentMonthElement.textContent = new Date(year, month).toLocaleString('default', { month: 'long', year: 'numeric' });
       calendarDatesElement.innerHTML = '';
       const firstDay = new Date(year, month, 1).getDay();
+      const today = new Date().getDate();
+      const currentMonth = new Date().getMonth();
       const daysInMonth = new Date(year, month + 1, 0).getDate();
 
       for (let i = 0; i < firstDay; i++) {
@@ -21,11 +23,19 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       for (let i = 1; i <= daysInMonth; i++) {
-          const dateElement = document.createElement('button');
+          const dateElement = document.createElement('div');
+          dateElement.classList.add('day');
+          if(i == today && month == currentMonth) {
+            dateElement.classList.add('selected');
+          }
           dateElement.textContent = i;
           dateElement.addEventListener('click', function () {
-              document.querySelectorAll('.calendar-dates div').forEach(e => e.classList.remove('selected'));
-              dateElement.classList.add('selected');
+            // Remove the 'selected' class from all day elements
+            document.querySelectorAll('.day').forEach(day => {
+                day.classList.remove('selected');
+            });
+            // Add the 'selected' class to the clicked element
+            dateElement.classList.add('selected');
           });
           calendarDatesElement.appendChild(dateElement);
       }

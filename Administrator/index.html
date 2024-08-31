@@ -199,11 +199,21 @@
     <div class="charts-area">
         <div class="left-content">
             <div class="calendar-section">
-                <div class="calendar" style="height: 100%;">
+                <div class="calendar">
                     <div class="calendar-header">
-                        <span class="prev-month">&lt;</span>
                         <div class="current-month">February 2019</div>
-                        <span class="next-month">&gt;</span>
+                        <div class="calendar-btn">
+                            <div class="prev-month">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-left"></use>
+                                </svg>
+                            </div>
+                            <div class="next-month" style="margin-left: 10px;">
+                                <svg class="icon"  aria-hidden="true">
+                                    <use xlink:href="#icon-left"></use>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                     <div class="calendar-body">
                         <div class="calendar-weekdays">
@@ -220,13 +230,113 @@
                         </div>
                     </div>
                 </div>
-                <div class="todo"></div>
+                <div class="todo">
+                    <div class="todo-list">
+                        <h2>Todo</h2>
+                        <div class="care-scroll">
+                            <div class="todo-item">
+                                <div class="circle"></div>
+                                <div class="task-content">
+                                    <p class="task-title">Assign new patients to therapists</p>
+                                    <p class="task-time">11 JUL 8:10 PM</p>
+                                </div>
+                            </div>
+                            <div class="todo-item">
+                                <div class="circle"></div>
+                                <div class="task-content">
+                                    <p class="task-title">Create identity information for new therapists</p>
+                                    <p class="task-time">11 JUL 11 PM</p>
+                                </div>
+                            </div>
+                            <div class="todo-item">
+                                <div class="circle"></div>
+                                <div class="task-content">
+                                    <p class="task-title">Monitoring statistics</p>
+                                    <p class="task-time">11 JUL 7:64 PM</p>
+                                </div>
+                            </div>
+                            <div class="todo-item">
+                                <div class="circle"></div>
+                                <div class="task-content">
+                                    <p class="task-title">Monitoring statistics</p>
+                                    <p class="task-time">11 JUL 7:64 PM</p>
+                                </div>
+                            </div>
+                            <div class="todo-item">
+                                <div class="circle"></div>
+                                <div class="task-content">
+                                    <p class="task-title">Monitoring statistics</p>
+                                    <p class="task-time">11 JUL 7:64 PM</p>
+                                </div>
+                            </div>
+                            <div class="todo-item">
+                                <div class="circle"></div>
+                                <div class="task-content">
+                                    <p class="task-title">Monitoring statistics</p>
+                                    <p class="task-time">11 JUL 7:64 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="chart-section" id="patient-chart">
-                <!-- Another Chart or Calendar content -->
             </div>
-            <div class="chart-section">
-                <!-- Additional content -->
+            <div class="chart-section care-scroll" style="overflow-y: auto;">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>E-mail ADDRESS</th>
+                            <th>Group</th>
+                            <th>Professional Field</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>00001</td>
+                            <td>Christine Brooks</td>
+                            <td>name123@care.com</td>
+                            <td>Expert group</td>
+                            <td>Early intervention</td>
+                            <td><span class="status online">Online</span></td>
+                        </tr>
+                        <tr>
+                            <td>00001</td>
+                            <td>Christine Brooks</td>
+                            <td>name123@care.com</td>
+                            <td>Expert group</td>
+                            <td>Early intervention</td>
+                            <td><span class="status online">Online</span></td>
+                        </tr>
+                        <tr>
+                            <td>00001</td>
+                            <td>Christine Brooks</td>
+                            <td>name123@care.com</td>
+                            <td>Expert group</td>
+                            <td>Early intervention</td>
+                            <td><span class="status online">Online</span></td>
+                        </tr>
+                        <tr>
+                            <td>00001</td>
+                            <td>Christine Brooks</td>
+                            <td>name123@care.com</td>
+                            <td>Expert group</td>
+                            <td>Early intervention</td>
+                            <td><span class="status rest">Rest</span></td>
+                        </tr>
+                        <tr>
+                            <td>00001</td>
+                            <td>Christine Brooks</td>
+                            <td>name123@care.com</td>
+                            <td>Expert group</td>
+                            <td>Early intervention</td>
+                            <td><span class="status quit">Quit</span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
         </div>
@@ -262,7 +372,7 @@
                         This Week
                         <span class="dropdown-icon">▼</span>
                     </div>
-                    <div class="patient-list">
+                    <div class="care-scroll patient-list">
                         <div class="patient-item">
                             <img src="assets/head.jpeg" alt="Patient Avatar" class="patient-avatar">
                             <div class="patient-info">
@@ -272,7 +382,7 @@
                                 <div class="patient-group">Group: Group1</div>
                             </div>
                             <div class="patient-menu">
-                                <svg class="icon menu-icon" aria-hidden="true">
+                                <svg class="icon copy" aria-hidden="true">
                                     <use xlink:href="#icon-menu"></use>
                                 </svg>
                             </div>
@@ -287,7 +397,7 @@
                                 <div class="patient-group">Group: Group2</div>
                             </div>
                             <div class="patient-menu">
-                                <svg class="icon menu-icon" aria-hidden="true">
+                                <svg class="icon copy" aria-hidden="true">
                                     <use xlink:href="#icon-menu"></use>
                                 </svg>
                             </div>
@@ -301,7 +411,7 @@
                                 <div class="patient-group">Group: Group2</div>
                             </div>
                             <div class="patient-menu">
-                                <svg class="icon menu-icon" aria-hidden="true">
+                                <svg class="icon copy" aria-hidden="true">
                                     <use xlink:href="#icon-menu"></use>
                                 </svg>
                             </div>
@@ -315,7 +425,7 @@
                                 <div class="patient-group">Group: Group2</div>
                             </div>
                             <div class="patient-menu">
-                                <svg class="icon menu-icon" aria-hidden="true">
+                                <svg class="icon copy" aria-hidden="true">
                                     <use xlink:href="#icon-menu"></use>
                                 </svg>
                             </div>
@@ -329,7 +439,7 @@
                                 <div class="patient-group">Group: Group2</div>
                             </div>
                             <div class="patient-menu">
-                                <svg class="icon menu-icon" aria-hidden="true">
+                                <svg class="icon copy" aria-hidden="true">
                                     <use xlink:href="#icon-menu"></use>
                                 </svg>
                             </div>
@@ -343,7 +453,7 @@
                                 <div class="patient-group">Group: Group2</div>
                             </div>
                             <div class="patient-menu">
-                                <svg class="icon menu-icon" aria-hidden="true">
+                                <svg class="icon copy" aria-hidden="true">
                                     <use xlink:href="#icon-menu"></use>
                                 </svg>
                             </div>

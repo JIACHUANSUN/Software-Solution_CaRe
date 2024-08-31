@@ -225,7 +225,7 @@ nav ul {
 .statistic-item {
   background-color: #fff;
   border-radius: .5rem;
-  width: calc(25% - 1rem);
+  width: 24.6%;
   height: 100%;
   text-align: center;
   align-items: center;
@@ -395,7 +395,7 @@ nav ul {
   display: flex;
   gap: 5px;
   background-color: #f7f7f7;
-  padding: 1rem 1.5rem 0 1.5rem;
+  padding: .5rem 1.5rem 0 1.5rem;
   display: flex;
   overflow: hidden;
   justify-content: center;
@@ -426,6 +426,7 @@ nav ul {
   border-radius: 0.5rem; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
   flex: 1; /* Grow equally within the parent */
+  height: 33%;
 }
 
 .calendar-section {
@@ -434,6 +435,7 @@ nav ul {
   display: flex;
   justify-content: space-between;
   gap: 5px;
+  height: 33%;
 }
 
 .calendar {
@@ -445,29 +447,53 @@ nav ul {
   background-color: #fff;
   border-radius: 0.5rem; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
-  flex: 1;
+  flex: 0.4;
+  font-family: 'Inter', sans-serif;
 }
+
 
 .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 10px;
+  height: 3rem;
   border-bottom: 1px solid #e0e0e0;
   font-weight: bold;
 }
 
+.current-month {
+  margin-left: 1.5rem;
+}
+
+.calendar-btn {
+ display: flex; 
+ margin-right: 1rem;
+}
+
 .prev-month, .next-month {
-  border: none;
-  border-radius: 5px; /* Rounded button corners */
-  font-size: 1em;
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s ease;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #f0f1f3; /* Light grey background */
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.prev-month .icon {
+  width: .8rem;
+  height: .8rem;
+}
+
+.next-month .icon {
+  width: .8rem;
+  height: .8rem;
+  transform: rotate(180deg);
 }
 
 .prev-month:hover, .next-month:hover {
@@ -495,13 +521,31 @@ nav ul {
   text-align: center;
 }
 
-.calendar-weekdays div {
-  font-weight: bold;
-  color: #999; /* Lighter grey for weekdays */
+.day {
+  height: 1.5rem;
+  width: 1.5rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px; /* Rounded corners */
+  color: #555; /* Normal text color */
+  font-size: .9rem;
+  cursor: pointer;
+  user-select: none; /* Prevent text selection */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
 }
 
-.calendar-dates div {
-  pointer-events: none;
+.day:hover {
+  background-color: #e0e1e3; /* Slight hover effect */
+}
+
+.day.selected {
+  border-radius: .5rem; /* Rounded corners */
+  background-color: #4a7aff; /* Blue background for selected state */
+  color: #ffffff; /* White text color for selected state */
 }
 
 .calendar-dates button {
@@ -514,20 +558,155 @@ nav ul {
   font-family: 'Inter', sans-serif;
 }
 
-.calendar-dates .selected {
-  background-color: #4a90e2; /* Blue background for selected date */
-  color: white; /* White text on selected date */
-  border-radius: 50%; /* Rounded background */
-}
-
 .todo {
+  
+  padding: 1rem;
   height: 100%;
+  max-height: 100%;
   width: 100%;
   background-color: #fff;
   border-radius: 0.5rem; /* Rounded corners */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Shadow for depth */
   flex: 1;
+  overflow: hidden; /* Prevent overflow */
 }
+
+.todo-list {
+  margin: 0 auto;
+  height: 100%;
+  max-height: 100%;
+}
+
+.todo-list h2 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+
+.todo-list .care-scroll {
+  height: 100%;
+  max-height: 100%;
+  overflow-y: auto;
+}
+
+.todo-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  margin-right: 2%; /* Space between columns */
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4a7aff; /* Blue color for the circle */
+  border-radius: 50%;
+  margin-right: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+.task-content {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.task-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  text-decoration: underline;
+  text-underline-offset: 7px;
+}
+
+.task-time {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0 0 0;
+}
+
+.table-container {
+  width: 90%;
+  margin: 0 auto;
+  overflow-x: auto;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  font-size: .875rem;
+}
+
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  flex: 1 1 auto;
+}
+
+.styled-table .care-scroll {
+  width: 100%;
+  display: block;
+  flex: 1 1 auto; /* Allows tbody to take available space */
+  overflow-y: auto; /* Enables vertical scrolling */
+  max-height: 100%; /* Ensure it stays within parent */
+}
+
+.styled-table th, .styled-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: .875rem;
+  align-items: center;
+}
+
+.styled-table td {
+  font-size: .875rem;
+  align-items: center;
+}
+
+.styled-table th {
+  font-weight: bold;
+  background-color: #FCFDFD;
+  border-bottom: 2px solid #ddd;
+}
+
+.styled-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.styled-table tbody tr td {
+  vertical-align: center;
+}
+
+.styled-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: .3rem;
+  font-weight: bold;
+  text-align: center;
+  width: 5rem;
+  font-size: .75rem;
+}
+
+.online {
+   background-color: #00b69b70;
+  color: #00B69B;
+}
+
+.rest {
+  background-color: #6226EF70;
+  color: #6226EF;
+}
+
+.quit {
+  background-color: #EF382670;
+  color: #EF3826;
+}
+
 
 
 /* Optional: remove the margin from the last child to avoid extra spacing at the bottom */
@@ -663,27 +842,27 @@ nav ul {
 }
 
 /* Custom Scrollbar Styling */
-.patient-list::-webkit-scrollbar {
+.care-scroll::-webkit-scrollbar {
   width: 6px; /* Width of the scrollbar */
 }
 
-.patient-list::-webkit-scrollbar-track {
+.care-scroll::-webkit-scrollbar-track {
   background: transparent; /* Background of the scrollbar track */
 }
 
-.patient-list::-webkit-scrollbar-thumb {
+.care-scroll::-webkit-scrollbar-thumb {
   background-color: #007bff; /* Blue color for the scrollbar handle */
   border-radius: 10px; /* Rounded corners for the scrollbar handle */
   visibility: hidden; /* Initially hidden */
 }
 
 /* Show scrollbar thumb only during scrolling */
-.patient-list:hover::-webkit-scrollbar-thumb {
+.care-scroll:hover::-webkit-scrollbar-thumb {
   visibility: visible;
 }
 
 /* Optional: Scrollbar visibility while scrolling */
-.patient-list::-webkit-scrollbar-thumb:hover {
+.care-scroll::-webkit-scrollbar-thumb:hover {
   background-color: #0056b3; /* Darker blue when hovered */
 }
 
@@ -737,7 +916,7 @@ nav ul {
   align-items: center;
 }
 
-.menu-icon {
+.copy {
   width: 20px;
   height: 20px;
   fill: #333;
