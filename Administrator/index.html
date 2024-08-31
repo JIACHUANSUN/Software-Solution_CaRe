@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page Layout</title>
+    <title>Home-administrator</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/index.css">
     <script src="components/icon/index.js"></script>
@@ -116,11 +116,23 @@
   </aside>
 
   <div class="content">
+    <div class="bread-bar">
+        <div class="link">
+            Welcome!  Austin Robertson !
+        </div>
+        <div class="announcement">
+            <svg class="icon arrow-icon" aria-hidden="true">
+                <use xlink:href="#icon-announcement"></use>
+            </svg>
+            <span style="margin-left: 4px;">announcement</span>
+        </div>
+    </div>
 
-    <div class = "statistic-area">
-        <div class = "statistic-item">
+    <!-- Statistic Area -->
+    <div class="statistic-area">
+        <div class="statistic-item">
             <div class="progress">
-                <div class="progress-circle" style="--percentage: 81;">
+                <div class="progress-circle" id="total-patients-progress">
                     <div class="progress-mask">
                         <svg class="icon arrow-icon" aria-hidden="true">
                             <use xlink:href="#icon-arrow-up"></use>
@@ -130,16 +142,16 @@
             </div>
             <div class="status-container">
                 <div class="title">Total Patients</div>
-                <div class="number">560K</div>
+                <div class="number" id="total-patients-amount">560K</div>
                 <div class="rate">
-                    14.25%
-                    <div class="arrow"></div>
+                    <span id="total-patients-percentage">14.25%</span>
+                    <div class="arrow" id="total-patients-arrow"></div>
                 </div>
             </div>
         </div>
-        <div class = "statistic-item">
+        <div class="statistic-item">
             <div class="progress">
-                <div class="progress-circle green" style="--percentage: 68;">
+                <div class="progress-circle" id="total-therapists-progress">
                     <div class="progress-mask">
                         <svg class="icon arrow-icon" aria-hidden="true">
                             <use xlink:href="#icon-arrow-up"></use>
@@ -148,17 +160,17 @@
                 </div>
             </div>
             <div class="status-container">
-                <div class="title">Total Therapist </div>
-                <div class="number">68</div>
+                <div class="title">Total Therapists</div>
+                <div class="number" id="total-therapists-amount">68</div>
                 <div class="rate">
-                    21.65%
-                    <div class="arrow down"></div>
+                    <span id="total-therapists-percentage">21.65%</span>
+                    <div class="arrow" id="total-therapists-arrow"></div>
                 </div>
             </div>
         </div>
-        <div class = "statistic-item">
+        <div class="statistic-item">
             <div class="progress">
-                <div class="progress-circle" style="--percentage: 76;">
+                <div class="progress-circle" id="new-patient-group-progress">
                     <div class="progress-mask">
                         <svg class="icon arrow-icon" aria-hidden="true">
                             <use xlink:href="#icon-arrow-up"></use>
@@ -168,16 +180,16 @@
             </div>
             <div class="status-container">
                 <div class="title">New Patient Group</div>
-                <div class="number">12.3K</div>
+                <div class="number" id="new-patient-group-amount">12.3K</div>
                 <div class="rate">
-                    10.36%
-                    <div class="arrow"></div>
+                    <span id="new-patient-group-percentage">10.36%</span>
+                    <div class="arrow" id="new-patient-group-arrow"></div>
                 </div>
             </div>
         </div>
-        <div class = "statistic-item">
+        <div class="statistic-item">
             <div class="progress">
-                <div class="progress-circle green" style="--percentage: 56;">
+                <div class="progress-circle" id="new-appointment-progress">
                     <div class="progress-mask">
                         <svg class="icon arrow-icon" aria-hidden="true">
                             <use xlink:href="#icon-arrow-up"></use>
@@ -187,14 +199,15 @@
             </div>
             <div class="status-container">
                 <div class="title">New Appointment</div>
-                <div class="number">76</div>
+                <div class="number" id="new-appointment-amount">76</div>
                 <div class="rate">
-                    13.95%
-                    <div class="arrow down"></div>
+                    <span id="new-appointment-percentage">13.95%</span>
+                    <div class="arrow" id="new-appointment-arrow"></div>
                 </div>
             </div>
         </div>
     </div>
+<!-- Statistic Area End -->
 
     <div class="charts-area">
         <div class="left-content">
@@ -347,21 +360,21 @@
                     <div class="section-title">Top Diagnostic</div>
                     <div class="section-period">This Week <span class="dropdown-icon">▼</span></div>
                     <div class="circular-chart">
-                        <div class="circle-segment segment-blue" style="--percentage: 90;"></div>
-                        <div class="circle-segment segment-cyan inner-circle" style="--percentage: 10;"></div>
+                        <div class="circle-segment segment-blue" style="--percentage: 90;" id="segment-blue"></div>
+                        <div class="circle-segment segment-cyan inner-circle" style="--percentage: 10;" id="segment-cyan"></div>
                         <div class="chart-inner-circle"></div>
                     </div>
                     <div class="diagnostic-legend">
                         <div class="legend-item">
                             <span class="legend-color blue"></span> Insomnia
-                            <span class="legend-value">251K</span>
+                            <span class="legend-value" id="insomnia-value">251K</span>
                         </div>
                         <div class="legend-item">
                             <span class="legend-color cyan"></span> Paranoea
-                            <span class="legend-value">176K</span>
+                            <span class="legend-value" id="paranoea-value">176K</span>
                         </div>
                     </div>
-                </div>   
+                </div>
             </div>
             <div class="new-patient">
                 <div class="new-patients-section" style="position: relative;">
@@ -371,6 +384,12 @@
                     <div class="section-period">
                         This Week
                         <span class="dropdown-icon">▼</span>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-item">Today</div>
+                            <div class="dropdown-item">This Week</div>
+                            <div class="dropdown-item">This Month</div>
+                            <div class="dropdown-item">This Year</div>
+                        </div>
                     </div>
                     <div class="care-scroll patient-list">
                         <div class="patient-item">
@@ -477,131 +496,9 @@
   <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
   <script src="js/calendar.js"></script>
   <script src="js/index.js"></script>
+  <script src="js/data.js"></script>
   <script>
-// Initialize the chart
-var patientChart = echarts.init(document.getElementById('patient-chart'));
 
-// Chart configuration
-var option = {
-    title: {
-        text: '{mainText|855.8K} {subText|Patients}',
-        left: '10px',
-        top: '10px',
-        textStyle: {
-            rich: {
-                mainText: {
-                    fontSize: 24,
-                    fontWeight: 'bold',
-                    color: '#333'
-                },
-                subText: {
-                    fontSize: 12,
-                    color: '#666',
-                    padding: [0, 0, 0, 10] 
-                }
-            }
-        }
-    },
-    tooltip: {
-        trigger: 'axis',
-        backgroundColor: 'rgba(255, 255, 255, 0.8)',
-        borderColor: '#ccc',
-        borderWidth: 1,
-        textStyle: {
-            color: '#333'
-        }
-    },
-    legend: {
-        data: ['Visiter', 'Register'],
-        top: '10px',
-        left: 'center', // Center horizontally
-        itemWidth: 8, // Width of legend icon
-        itemHeight: 8, // Height of legend icon
-        textStyle: {
-            color: '#8A92A6' // Text color for legend
-        },
-        orient: 'horizontal', // Horizontal layout for legend items
-        icon: 'circle', // Use filled circle for legend icons
-    },
-    grid: {
-        left: '1%',
-        right: '2%',
-        bottom: '3%',
-        top: '20%',
-        containLabel: true
-    },
-    xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
-        axisLine: {
-            show: false
-        },
-        axisTick: {
-            show: false
-        },
-        axisLabel: {
-            color: '#666'
-        }
-    },
-    yAxis: {
-        type: 'value',
-        axisLine: {
-            show: false
-        },
-        axisTick: {
-            show: false
-        },
-        axisLabel: {
-            color: '#666'
-        },
-        splitLine: {
-            lineStyle: {
-                color: '#eee'
-            }
-        }
-    },
-    series: [
-        {
-            name: 'Visiter',
-            type: 'line',
-            smooth: true, // Smooth curve
-            showSymbol: false, // Hide symbols on the line
-            areaStyle: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    { offset: 0, color: 'rgba(58, 87, 232, 0.4)' }, // Gradient color
-                    { offset: 1, color: 'rgba(58, 87, 232, 0.1)' }
-                ])
-            },
-            lineStyle: {
-                color: '#3A57E8', // Color for Visiter line
-                width: 2
-            },
-            data: [90, 81, 85, 92, 88, 87, 85, 90]
-        },
-        {
-            name: 'Register',
-            type: 'line',
-            smooth: true, // Smooth curve
-            showSymbol: false, // Hide symbols on the line
-            areaStyle: {
-                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                    { offset: 0, color: 'rgba(133, 244, 250, 0.4)' }, // Gradient color
-                    { offset: 1, color: 'rgba(133, 244, 250, 0.1)' }
-                ])
-            },
-            lineStyle: {
-                color: '#85F4FA', // Color for Register line
-                width: 2
-            },
-            data: [14, 23, 35, 45, 42, 45, 55, 44]
-        }
-    ],
-    color: ['#3A57E8', '#85F4FA'] // Define colors for each series
-};
-
-// Set chart options
-patientChart.setOption(option);
 
   </script>
 </body>

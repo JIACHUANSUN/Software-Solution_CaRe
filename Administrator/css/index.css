@@ -216,9 +216,9 @@ nav ul {
   flex-wrap: wrap;  
   gap: 5px;
   background-color: transparent;
-  margin-top: 1.5rem;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-top: .5rem;
+  margin-left: .5rem;
+  margin-right: .5rem;
   justify-content: space-between;
 }
 
@@ -384,18 +384,18 @@ nav ul {
 
 @media (max-width: 1520px) {
   .statistic-item {
-    width: calc(50% - 1rem);
+    width: calc(50% - .25rem);
     margin-bottom: 10px;
   }
 }
 
 .charts-area {
-  height: calc(100vh - 16rem);
+  height: calc(100vh - 18rem);
   flex: 1;
   display: flex;
   gap: 5px;
   background-color: #f7f7f7;
-  padding: .5rem 1.5rem 0 1.5rem;
+  padding: .5rem .5rem 0 .5rem;
   display: flex;
   overflow: hidden;
   justify-content: center;
@@ -403,12 +403,6 @@ nav ul {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   justify-content: space-between;
-}
-
-@media (max-width: 1520px) {
-  .charts-area {
-    height: calc(100vh - 30rem);
-  }
 }
 
 .left-content {
@@ -943,5 +937,60 @@ nav ul {
   font-size: 0.7rem;
 }
 
+.dropdown-menu {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  min-width: 100%; /* Full width of the parent */
+  padding: 5px 0;
+  margin-top: 5px;
+}
+
+.dropdown-item {
+  padding: 10px;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown.active .dropdown-menu {
+  display: block; /* Show dropdown menu when active */
+}
+
+.bread-bar {
+  height: 3rem;
+  background-color: #0F67FE; 
+  border-radius: 0 0 .5rem .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  padding: 0 3rem;
+}
+
+.announcement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 13rem;
+  background-color: #3A57E8A6;
+  height: 2rem;
+  border-radius: .25rem;
+  cursor: pointer;
+}
 
 
+.bread-crumb {
+  
+}

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Therapist Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="index.css">
+    <script src="/components/icon/index.js"></script>
+</head>
+<body>
+  <header class="nav-bar">
+    <div class="nav-logo">
+        <img src="/assets/Component 2.png" alt="Website Logo" class="logo">
+    </div>
+    <div class="nav-items">
+        <span class="icon notification-icon"><img src="/assets/Notification.png" alt="Notifications"></span>
+        <span class="icon message-icon"><img src="/assets/Message.png" alt="Messages"></span>
+        <div class="user-info">
+            <img src="/assets/doc0.jpeg" alt="User Avatar" class="user-avatar">
+            <div class="user-details">
+                <span class="user-name">Austin Robertson</span>
+                <span class="user-role">Marketing Administrator</span>
+            </div>
+        </div>
+    </div>
+  </header>
+  <aside class="side-menu">
+    <nav>
+        <ul>
+            <!-- Home Button -->
+            <li class="menu-item">
+                <svg class="icon menu-icon" aria-hidden="true">
+                    <use xlink:href="#icon-home"></use>
+                </svg>
+                <span class="menu-text">Home</span>
+                
+            </li>
+            <!-- Group 1: Pages -->
+            <span class="menu-group-title">Pages</span>
+            <li class="menu-item active">
+                <svg class="icon menu-icon" aria-hidden="true">
+                    <use xlink:href="#icon-game"></use>
+                </svg>
+                <span class="menu-text">Therapist</span>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </li>
+            <li class="menu-item">
+                <svg class="icon menu-icon" aria-hidden="true">
+                    <use xlink:href="#icon-patient"></use>
+                </svg>
+                <span class="menu-text">Patient</span>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </li>
+            <li class="menu-item">
+                <svg class="icon menu-icon" aria-hidden="true">
+                    <use xlink:href="#icon-group"></use>
+                </svg>
+                <span class="menu-text">Group</span>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </li>
+            <li class="menu-item">
+                <svg class="icon menu-icon" aria-hidden="true">
+                    <use xlink:href="#icon-schedule"></use>
+                </svg>
+                <span class="menu-text">Appointment</span>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </li>
+            <li class="menu-item">
+                <svg class="icon menu-icon" aria-hidden="true">
+                    <use xlink:href="#icon-authentication"></use>
+                </svg>
+                <span class="menu-text">Authentication</span>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </li>
+            <li class="menu-item">
+                <svg class="icon menu-icon" aria-hidden="true">
+                    <use xlink:href="#icon-setting"></use>
+                </svg>
+                <span class="menu-text">Setting</span>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </li>
+            <!-- Other items... -->
+            <hr class="menu-divider">
+            <!-- Group 2: Elements -->
+            <span class="menu-group-title">Elements</span>
+            <li class="menu-item">
+                <img src="/assets/components-icon.svg" alt="Components Icon" class="menu-icon">
+                <span class="menu-text">Components</span>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </li>
+            <li class="menu-item">
+                <img src="/assets/form-icon.svg" alt="Form Icon" class="menu-icon">
+                <span class="menu-text">Form</span>
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-arrow"></use>
+                </svg>
+            </li>
+            <!-- Other items... -->
+        </ul>
+    </nav>
+  </aside>
+
+  <div class="content">
+    <div class="bread-bar">
+        <div class="link">
+          Therapist management >
+        </div>
+        <div class="announcement">
+            <svg class="icon arrow-icon" aria-hidden="true">
+                <use xlink:href="#icon-announcement"></use>
+            </svg>
+            <span style="margin-left: 4px;">announcement</span>
+        </div>
+    </div>
+
+    <div class="category-section">
+      <div class="category-container ownership">
+        <svg class="icon menu-icon" aria-hidden="true">
+          <use xlink:href="#icon-ownership"></use>
+        </svg>
+        <span>Ownership Group</span>
+      </div>
+      <div class="category-container professional">
+        <svg class="icon menu-icon" aria-hidden="true">
+          <use xlink:href="#icon-profession"></use>
+        </svg>
+        <span>Professional Field</span>
+      </div>
+      <div class="category-container certification">
+        <svg class="icon menu-icon" aria-hidden="true">
+          <use xlink:href="#icon-certification"></use>
+        </svg>
+        <span>Therapists certification</span>
+      </div>
+      <div class="category-container training">
+        <svg class="icon menu-icon" aria-hidden="true">
+          <use xlink:href="#icon-training"></use>
+        </svg>
+        <span>Therapist training</span>
+      </div>
+    </div>
+    <div class="list-name">Therapists Lists</div>
+
+    <div class="filter-section">
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search ID or Name">
+      </div>
+      <div class="filter-bar">
+        <div class="filter-item">
+            <div class="filter-icon"></div>
+            <span style="font-weight: 600;">Filter By</span>
+        </div>
+        <div class="filter-item">
+          <div class="dropdown">
+            <div class="dropdown-selected">Group</div>
+            <div class="dropdown-options">
+                <div class="dropdown-option">Group 1</div>
+                <div class="dropdown-option">Group 2</div>
+                <div class="dropdown-option">Group 3</div>
+                <div class="dropdown-option">Group 4</div>
+            </div>
+          </div>
+        </div>
+        <div class="filter-item">
+          <div class="dropdown">
+              <div class="dropdown-selected">Field</div>
+              <div class="dropdown-options">
+                  <div class="dropdown-option">Field 1</div>
+                  <div class="dropdown-option">Field 2</div>
+                  <div class="dropdown-option">Field 3</div>
+                  <div class="dropdown-option">Field 4</div>
+                  <div class="dropdown-option">Field 5</div>
+                  <div class="dropdown-option">Field 6</div>
+                  <!-- Other options -->
+              </div>
+          </div>
+        </div>
+      
+        <div class="filter-item">
+          <div class="dropdown">
+              <div class="dropdown-selected">Status</div>
+              <div class="dropdown-options">
+                  <div class="dropdown-option">Online</div>
+                  <div class="dropdown-option">Rest</div>
+                  <div class="dropdown-option">Quit</div>
+              </div>
+          </div>
+        </div>
+      
+        <div class="filter-item reset-filter" style="justify-content: center; cursor: pointer;">
+            <div class="reset-icon"></div>
+            <span class="reset-text">Reset Filter</span>
+        </div>
+    </div>
+    </div>
+
+    <div class="therapist-table-container">
+      <table class="styled-table" >
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>NAME</th>
+                  <th>E-mail ADDRESS</th>
+                  <th>Group</th>
+                  <th>Professional Field</th>
+                  <th>STATUS</th>
+                  <th>Operation</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>00001</td>
+                  <td>Christine Brooks</td>
+                  <td>name123@care.com</td>
+                  <td>Expert group</td>
+                  <td>Early intervention</td>
+                  <td><span class="status online">Online</span></td>
+                  <td>edit | check</td>
+              </tr>
+              <tr>
+                <td>00001</td>
+                <td>Christine Brooks</td>
+                <td>name123@care.com</td>
+                <td>Expert group</td>
+                <td>Early intervention</td>
+                <td><span class="status online">Online</span></td>
+                <td>edit | check</td>
+            </tr>
+            <tr>
+              <td>00001</td>
+              <td>Christine Brooks</td>
+              <td>name123@care.com</td>
+              <td>Expert group</td>
+              <td>Early intervention</td>
+              <td><span class="status online">Online</span></td>
+              <td>edit | check</td>
+          </tr>
+          <tr>
+            <td>00001</td>
+            <td>Christine Brooks</td>
+            <td>name123@care.com</td>
+            <td>Expert group</td>
+            <td>Early intervention</td>
+            <td><span class="status online">Online</span></td>
+            <td>edit | check</td>
+        </tr>
+        <tr>
+          <td>00001</td>
+          <td>Christine Brooks</td>
+          <td>name123@care.com</td>
+          <td>Expert group</td>
+          <td>Early intervention</td>
+          <td><span class="status online">Online</span></td>
+          <td>edit | check</td>
+      </tr><tr>
+        <td>00001</td>
+        <td>Christine Brooks</td>
+        <td>name123@care.com</td>
+        <td>Expert group</td>
+        <td>Early intervention</td>
+        <td><span class="status online">Online</span></td>
+        <td>edit | check</td>
+    </tr>
+    <tr>
+      <td>00001</td>
+      <td>Christine Brooks</td>
+      <td>name123@care.com</td>
+      <td>Expert group</td>
+      <td>Early intervention</td>
+      <td><span class="status online">Online</span></td>
+      <td>edit | check</td>
+  </tr>
+  <tr>
+    <td>00001</td>
+    <td>Christine Brooks</td>
+    <td>name123@care.com</td>
+    <td>Expert group</td>
+    <td>Early intervention</td>
+    <td><span class="status online">Online</span></td>
+    <td>edit | check</td>
+</tr>
+<tr>
+  <td>00001</td>
+  <td>Christine Brooks</td>
+  <td>name123@care.com</td>
+  <td>Expert group</td>
+  <td>Early intervention</td>
+  <td><span class="status online">Online</span></td>
+  <td>edit | check</td>
+</tr><tr>
+  <td>00001</td>
+  <td>Christine Brooks</td>
+  <td>name123@care.com</td>
+  <td>Expert group</td>
+  <td>Early intervention</td>
+  <td><span class="status online">Online</span></td>
+  <td>edit | check</td>
+</tr><tr>
+  <td>00001</td>
+  <td>Christine Brooks</td>
+  <td>name123@care.com</td>
+  <td>Expert group</td>
+  <td>Early intervention</td>
+  <td><span class="status online">Online</span></td>
+  <td>edit | check</td>
+</tr>
+              <!-- Additional rows... -->
+          </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="bottom-info">
+    <span>Privacy Policy</span>
+    <span style="margin-left: 3rem;">Terms of Use</span>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const dropdowns = document.querySelectorAll('.dropdown');
+
+      dropdowns.forEach(dropdown => {
+          const selected = dropdown.querySelector('.dropdown-selected');
+          const options = dropdown.querySelector('.dropdown-options');
+          const items = dropdown.querySelectorAll('.dropdown-option');
+
+          // Toggle dropdown open/close
+          selected.addEventListener('click', function() {
+              // Close other dropdowns
+              document.querySelectorAll('.dropdown-options').forEach(opt => {
+                  if (opt !== options) {
+                      opt.style.display = 'none';
+                  }
+              });
+
+              options.style.display = options.style.display === 'block' ? 'none' : 'block';
+          });
+
+          // Set selected option
+          items.forEach(item => {
+              item.addEventListener('click', function() {
+                  selected.textContent = this.textContent;
+                  options.style.display = 'none';
+              });
+          });
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(event) {
+          if (!event.target.closest('.dropdown')) {
+              document.querySelectorAll('.dropdown-options').forEach(opt => {
+                  opt.style.display = 'none';
+              });
+          }
+      });
+  });
+
+
+  </script>
+</body>
+</html>
