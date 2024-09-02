@@ -412,8 +412,12 @@
 }
 
 /* Left and Right section layout */
-.therapist-info-left-section, .therapist-info-right-section {
-  width: 48%;
+.therapist-info-left-section {
+  width: 45%;
+}
+
+.therapist-info-right-section {
+  width: 55%;
 }
 
 /* Therapist Info Card */
@@ -481,7 +485,7 @@
   margin-top: 10px;
   position: absolute;
   bottom: 0;
-  right: 20px;
+  right: 0;
 }
 
 .therapist-info-edit-btn,
@@ -532,8 +536,18 @@
 .therapist-info-patient-item {
   display: flex;
   align-items: center;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  color: #2260FF;
+  cursor: pointer;
+}
+
+.patient-item-selected {
+  background-color: #0F67FE;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .therapist-info-patient-item img {
@@ -553,13 +567,15 @@
   margin-left: auto;
 }
 
+
+
 /* Certificates Section */
 .therapist-info-certificates {
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #f8f9fa;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .therapist-info-certificates h4 {
@@ -574,40 +590,103 @@
 }
 
 .therapist-info-certificate-item img {
-  width: 100px;
+  width: 10rem;
   height: auto;
   margin-right: 10px;
 }
 
+.therapist-info-certificate-item p {
+  color: #0F67FE;
+  cursor: pointer;
+}
+
 /* Therapist Group Section */
 .therapist-info-group {
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
   background-color: #f8f9fa;
 }
 
+/* Container for the group item */
 .therapist-info-group-item {
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  background-color: #D7F2EE; /* Light blue-green background */
+  border-radius: 15px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-bottom: 20px;
+  width: 100%; /* Full width for responsiveness */
 }
 
-.therapist-info-group-item h5 {
-  margin: 0;
+
+.therapist-info-group-item:nth-child(odd) {
+  background-color: #CCF0EB; /* Light blue-green background */
+}
+
+.therapist-info-group-item:nth-child(even) {
+  background-color: #E0D4FC; /* Light blue background */
+}
+
+
+/* Icon section */
+.group-icon {
+  flex: 0 0 auto; /* Fixed size, does not grow */
+  margin-right: 20px;
+}
+
+.group-icon img {
+  width: 40px; /* Adjust icon size */
+  height: 40px;
+}
+
+/* Group details section */
+.group-details {
+  flex: 1; /* Takes available space */
+  margin-right: 20px; /* Space between group details and authority */
+}
+
+.group-details h4 {
+  margin: 0 0 10px 0; /* Margin below the heading */
   font-size: 16px;
-  color: #0F67FE;
+  color: #00474f; /* Darker shade for text */
+  font-weight: bold;
 }
 
-.therapist-info-group-item p {
-  margin: 5px 0;
+.group-details p {
+  margin: 0;
+  font-size: 14px;
+  color: #00474f;
 }
 
-.therapist-info-group-item a {
-  color: #0F67FE;
-  text-decoration: none;
+/* Authority section */
+.group-authority {
+  flex: 1; /* Takes available space */
+  text-align: right; /* Aligns text to the right */
 }
 
-.therapist-info-group-item a:hover {
-  text-decoration: underline;
+.group-authority h4 {
+  margin: 0 0 10px 0; /* Margin below the heading */
+  font-size: 16px;
+  color: #00474f; /* Same color as other headings */
+  font-weight: bold;
+}
+
+.group-authority p {
+  margin: 5px 0; /* Spacing between links */
+}
+
+.group-authority a {
+  color: #00474f; /* Link color */
+  text-decoration: underline; /* Underlined links */
+  font-size: 14px;
+}
+
+.group-authority a:hover {
+  text-decoration: none; /* Remove underline on hover */
+  color: #002d33; /* Darker color on hover */
 }
 
 

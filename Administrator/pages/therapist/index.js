@@ -3,6 +3,39 @@ document.addEventListener('DOMContentLoaded', function() {
   const resetFilter = document.querySelector('.reset-filter');
   const spinner = document.getElementById('loading-spinner');
 
+
+  const checkboxes = document.querySelectorAll('.therapist-info-patient-checkbox');
+
+  checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+          const parent = this.closest('.therapist-info-patient-item');
+          if (this.checked) {
+              parent.classList.add('patient-item-selected');
+          } else {
+              parent.classList.remove('patient-item-selected');
+          }
+      });
+  });
+
+  const patientItems = document.querySelectorAll('.therapist-info-patient-item');
+
+    patientItems.forEach(item => {
+        item.addEventListener('click', function(event) {
+            // Prevent the event from firing when clicking directly on the checkbox
+            if (event.target.type !== 'checkbox') {
+                const checkbox = this.querySelector('.therapist-info-patient-checkbox');
+                checkbox.checked = !checkbox.checked; // Toggle the checkbox state
+                
+                // Toggle the 'selected' class based on the checkbox state
+                if (checkbox.checked) {
+                    this.classList.add('patient-item-selected');
+                } else {
+                    this.classList.remove('patient-item-selected');
+                }
+            }
+        });
+    });
+
   
   // Generate mock data with 150 entries
   const mockData = [];
