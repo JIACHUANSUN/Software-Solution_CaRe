@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Therapist Management</title>
+    <link rel="stylesheet" href="/components/modal/index.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/index.css">
     <link rel="stylesheet" href="index.css">
+   
     <script src="/components/icon/index.js"></script>
 </head>
 <body>
@@ -168,25 +170,25 @@
         </div>
         <div class="filter-item">
           <div class="dropdown">
-            <div class="dropdown-selected">Group</div>
+            <div class="dropdown-selected" data-default="Group">Group</div>
             <div class="dropdown-options">
-                <div class="dropdown-option">Group 1</div>
-                <div class="dropdown-option">Group 2</div>
-                <div class="dropdown-option">Group 3</div>
-                <div class="dropdown-option">Group 4</div>
+                <div class="dropdown-option" data-value="Group 1">Group 1</div>
+                <div class="dropdown-option" data-value="Group 2">Group 2</div>
+                <div class="dropdown-option" data-value="Group 3">Group 3</div>
+                <div class="dropdown-option" data-value="Group 4">Group 4</div>
             </div>
           </div>
         </div>
         <div class="filter-item">
           <div class="dropdown">
-              <div class="dropdown-selected">Field</div>
+              <div class="dropdown-selected" data-default="Field">Field</div>
               <div class="dropdown-options">
-                  <div class="dropdown-option">Field 1</div>
-                  <div class="dropdown-option">Field 2</div>
-                  <div class="dropdown-option">Field 3</div>
-                  <div class="dropdown-option">Field 4</div>
-                  <div class="dropdown-option">Field 5</div>
-                  <div class="dropdown-option">Field 6</div>
+                  <div class="dropdown-option" data-value="Field 1">Field 1</div>
+                  <div class="dropdown-option" data-value="Field 2">Field 2</div>
+                  <div class="dropdown-option" data-value="Field 3">Field 3</div>
+                  <div class="dropdown-option" data-value="Field 4">Field 4</div>
+                  <div class="dropdown-option" data-value="Field 5">Field 5</div>
+                  <div class="dropdown-option" data-value="Field 6">Field 6</div>
                   <!-- Other options -->
               </div>
           </div>
@@ -194,11 +196,11 @@
       
         <div class="filter-item">
           <div class="dropdown">
-              <div class="dropdown-selected">Status</div>
+              <div class="dropdown-selected" data-default="Status">Status</div>
               <div class="dropdown-options">
-                  <div class="dropdown-option">Online</div>
-                  <div class="dropdown-option">Rest</div>
-                  <div class="dropdown-option">Quit</div>
+                  <div class="dropdown-option" data-value="Online">Online</div>
+                  <div class="dropdown-option" data-value="Rest">Rest</div>
+                  <div class="dropdown-option" data-value="Quit">Quit</div>
               </div>
           </div>
         </div>
@@ -211,169 +213,152 @@
     </div>
 
     <div class="therapist-table-container">
-      <table class="styled-table" >
-          <thead>
-              <tr>
-                  <th>ID</th>
-                  <th>NAME</th>
-                  <th>E-mail ADDRESS</th>
-                  <th>Group</th>
-                  <th>Professional Field</th>
-                  <th>STATUS</th>
-                  <th>Operation</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>00001</td>
-                  <td>Christine Brooks</td>
-                  <td>name123@care.com</td>
-                  <td>Expert group</td>
-                  <td>Early intervention</td>
-                  <td><span class="status online">Online</span></td>
-                  <td>edit | check</td>
-              </tr>
-              <tr>
-                <td>00001</td>
-                <td>Christine Brooks</td>
-                <td>name123@care.com</td>
-                <td>Expert group</td>
-                <td>Early intervention</td>
-                <td><span class="status online">Online</span></td>
-                <td>edit | check</td>
-            </tr>
-            <tr>
-              <td>00001</td>
-              <td>Christine Brooks</td>
-              <td>name123@care.com</td>
-              <td>Expert group</td>
-              <td>Early intervention</td>
-              <td><span class="status online">Online</span></td>
-              <td>edit | check</td>
-          </tr>
-          <tr>
-            <td>00001</td>
-            <td>Christine Brooks</td>
-            <td>name123@care.com</td>
-            <td>Expert group</td>
-            <td>Early intervention</td>
-            <td><span class="status online">Online</span></td>
-            <td>edit | check</td>
-        </tr>
-        <tr>
-          <td>00001</td>
-          <td>Christine Brooks</td>
-          <td>name123@care.com</td>
-          <td>Expert group</td>
-          <td>Early intervention</td>
-          <td><span class="status online">Online</span></td>
-          <td>edit | check</td>
-      </tr><tr>
-        <td>00001</td>
-        <td>Christine Brooks</td>
-        <td>name123@care.com</td>
-        <td>Expert group</td>
-        <td>Early intervention</td>
-        <td><span class="status online">Online</span></td>
-        <td>edit | check</td>
-    </tr>
-    <tr>
-      <td>00001</td>
-      <td>Christine Brooks</td>
-      <td>name123@care.com</td>
-      <td>Expert group</td>
-      <td>Early intervention</td>
-      <td><span class="status online">Online</span></td>
-      <td>edit | check</td>
-  </tr>
-  <tr>
-    <td>00001</td>
-    <td>Christine Brooks</td>
-    <td>name123@care.com</td>
-    <td>Expert group</td>
-    <td>Early intervention</td>
-    <td><span class="status online">Online</span></td>
-    <td>edit | check</td>
-</tr>
-<tr>
-  <td>00001</td>
-  <td>Christine Brooks</td>
-  <td>name123@care.com</td>
-  <td>Expert group</td>
-  <td>Early intervention</td>
-  <td><span class="status online">Online</span></td>
-  <td>edit | check</td>
-</tr><tr>
-  <td>00001</td>
-  <td>Christine Brooks</td>
-  <td>name123@care.com</td>
-  <td>Expert group</td>
-  <td>Early intervention</td>
-  <td><span class="status online">Online</span></td>
-  <td>edit | check</td>
-</tr><tr>
-  <td>00001</td>
-  <td>Christine Brooks</td>
-  <td>name123@care.com</td>
-  <td>Expert group</td>
-  <td>Early intervention</td>
-  <td><span class="status online">Online</span></td>
-  <td>edit | check</td>
-</tr>
-              <!-- Additional rows... -->
-          </tbody>
-      </table>
+        <div class="loading-spinner" id="loading-spinner"></div>
+        <table class="styled-table" >
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>E-mail ADDRESS</th>
+                    <th>Group</th>
+                    <th>Professional Field</th>
+                    <th>STATUS</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
     </div>
-
   </div>
 
   <div class="bottom-info">
     <span>Privacy Policy</span>
     <span style="margin-left: 3rem;">Terms of Use</span>
   </div>
+  <div id="therapost-editor" class="modal-mask">
+    <div class="modal-wrap">
+        <div class="modal-content">
+            <button class="modal-close" onclick="hideModal()">✖</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Therapist Details</h2>
+            </div>
+            <div class="modal-body">
+                <div class="therapist-info-container">
+                    <!-- Left Section: Therapist Info -->
+                    <div class="therapist-info-left-section">
+                        <div class="therapist-info-card">
+                            <div class="therapist-info-image">
+                                <img src="/assets/doc2.jpeg" alt="Therapist Picture">
+                            </div>
+                            <div class="therapist-info-content">
+                                <h4 class="therapist-info-name">Therapist ID: 001<br>Olivia Turner, M.D.</h4>
+                                <p>Email: <a href="mailto:ademsmith123@care.com">ademsmith123@care.com</a></p>
+                                <p>Professional Field: Early Intervention records</p>
+                                <p>Brief: Early intervention records Early intervention Early intervention records Early intervention Early</p>
+                                <div class="therapist-info-buttons">
+                                    <button class="therapist-info-edit-btn">Edit</button>
+                                    <button class="therapist-info-delete-btn">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <!-- Assigned Patient Section -->
+                        <div class="therapist-info-assigned-patient">
+                            <h4>Assigned Patient</h4>
+                            <input type="text" placeholder="Search ID or Name" class="therapist-info-search-input">
+                            <div class="therapist-info-patient-list">
+                                <!-- Example Patient Items -->
+                                <div class="therapist-info-patient-item">
+                                    <img src="patient-image.jpg" alt="Patient Picture">
+                                    <div class="therapist-info-patient-info">
+                                        <h4>Patient ID: 001</h4>
+                                        <h4>Olivia Turner, M.D.</h4>
+                                    </div>
+                                    <input type="checkbox" class="therapist-info-patient-checkbox">
+                                </div>
+                                <div class="therapist-info-patient-item">
+                                    <img src="patient-image.jpg" alt="Patient Picture">
+                                    <div class="therapist-info-patient-info">
+                                        <h4>Patient ID: 001</h4>
+                                        <h4>Olivia Turner, M.D.</h4>
+                                    </div>
+                                    <input type="checkbox" class="therapist-info-patient-checkbox">
+                                </div>
+                                <div class="therapist-info-patient-item">
+                                    <img src="patient-image.jpg" alt="Patient Picture">
+                                    <div class="therapist-info-patient-info">
+                                        <h4>Patient ID: 001</h4>
+                                        <h4>Olivia Turner, M.D.</h4>
+                                    </div>
+                                    <input type="checkbox" class="therapist-info-patient-checkbox">
+                                </div>
+                                <div class="therapist-info-patient-item">
+                                    <img src="patient-image.jpg" alt="Patient Picture">
+                                    <div class="therapist-info-patient-info">
+                                        <h4>Patient ID: 001</h4>
+                                        <h4>Olivia Turner, M.D.</h4>
+                                    </div>
+                                    <input type="checkbox" class="therapist-info-patient-checkbox">
+                                </div>
+                                <div class="therapist-info-patient-item">
+                                    <img src="patient-image.jpg" alt="Patient Picture">
+                                    <div class="therapist-info-patient-info">
+                                        <h4>Patient ID: 001</h4>
+                                        <h4>Olivia Turner, M.D.</h4>
+                                    </div>
+                                    <input type="checkbox" class="therapist-info-patient-checkbox">
+                                </div>
+                                <div class="therapist-info-patient-item">
+                                    <img src="patient-image.jpg" alt="Patient Picture">
+                                    <div class="therapist-info-patient-info">
+                                        <h4>Patient ID: 001</h4>
+                                        <h4>Olivia Turner, M.D.</h4>
+                                    </div>
+                                    <input type="checkbox" class="therapist-info-patient-checkbox">
+                                </div>
+                                <!-- Repeat therapist-info-patient-item for each patient -->
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Right Section: Certificates and Therapist Group -->
+                    <div class="therapist-info-right-section">
+                        <!-- Certificates Section -->
+                        <div class="therapist-info-certificates">
+                            <h4>Certificate (02)</h4>
+                            <div class="therapist-info-certificate-item">
+                                <img src="certificate1.jpg" alt="Certificate Image">
+                                <p>The Psychiatrist's Guide to Population Management of Diabetes</p>
+                            </div>
+                            <div class="therapist-info-certificate-item">
+                                <img src="certificate2.jpg" alt="Certificate Image">
+                                <p>DOCTORATE OF PSYCHIATRY</p>
+                            </div>
+                        </div>
+            
+                        <!-- Therapist Group Section -->
+                        <div class="therapist-info-group">
+                            <h4>Therapist Group</h4>
+                            <div class="therapist-info-group-item">
+                                <h5>Expert group</h5>
+                                <p>Num of Members: 18</p>
+                                <p>Authority: <a href="#">View patient information</a>, <a href="#">Edit patient data</a>, <a href="#">Create a patient group</a></p>
+                            </div>
+                            <div class="therapist-info-group-item">
+                                <h5>Therapist group</h5>
+                                <p>Num of Members: 18</p>
+                                <p>Authority: <a href="#">View patient information</a>, <a href="#">Create a patient group</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const dropdowns = document.querySelectorAll('.dropdown');
-
-      dropdowns.forEach(dropdown => {
-          const selected = dropdown.querySelector('.dropdown-selected');
-          const options = dropdown.querySelector('.dropdown-options');
-          const items = dropdown.querySelectorAll('.dropdown-option');
-
-          // Toggle dropdown open/close
-          selected.addEventListener('click', function() {
-              // Close other dropdowns
-              document.querySelectorAll('.dropdown-options').forEach(opt => {
-                  if (opt !== options) {
-                      opt.style.display = 'none';
-                  }
-              });
-
-              options.style.display = options.style.display === 'block' ? 'none' : 'block';
-          });
-
-          // Set selected option
-          items.forEach(item => {
-              item.addEventListener('click', function() {
-                  selected.textContent = this.textContent;
-                  options.style.display = 'none';
-              });
-          });
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(event) {
-          if (!event.target.closest('.dropdown')) {
-              document.querySelectorAll('.dropdown-options').forEach(opt => {
-                  opt.style.display = 'none';
-              });
-          }
-      });
-  });
-
-
-  </script>
+  <script src="index.js"></script>
 </body>
 </html>
