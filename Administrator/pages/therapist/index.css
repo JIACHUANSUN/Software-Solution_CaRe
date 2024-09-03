@@ -529,7 +529,7 @@
 }
 
 .therapist-info-patient-list {
-  max-height: 300px;
+  max-height: 350px;
   overflow-y: auto;
 }
 
@@ -600,8 +600,7 @@
   cursor: pointer;
 }
 
-/* Therapist Group Section */
-.therapist-info-group {
+.therapist-info-group-container {
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 10px;
@@ -616,9 +615,8 @@
   padding: 20px;
   background-color: #D7F2EE; /* Light blue-green background */
   border-radius: 15px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  margin-bottom: 20px;
-  width: 100%; /* Full width for responsiveness */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  margin-bottom: 10px;
 }
 
 
@@ -626,10 +624,15 @@
   background-color: #CCF0EB; /* Light blue-green background */
 }
 
+
+
 .therapist-info-group-item:nth-child(even) {
   background-color: #E0D4FC; /* Light blue background */
 }
 
+.therapist-info-group-item:last-child {
+  margin-bottom: 0;
+}
 
 /* Icon section */
 .group-icon {
@@ -644,6 +647,10 @@
 
 /* Group details section */
 .group-details {
+  display: flex;
+  height: 120px;
+  flex-direction: column;
+  justify-content: space-between;
   flex: 1; /* Takes available space */
   margin-right: 20px; /* Space between group details and authority */
 }
