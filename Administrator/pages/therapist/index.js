@@ -1,8 +1,59 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const dropdowns = document.querySelectorAll('.filter-item.dropdown');
+  const dropdowns = document.querySelectorAll('.dropdown');
   const resetFilter = document.querySelector('.reset-filter');
   const spinner = document.getElementById('loading-spinner');
 
+console.log(dropdowns)
+  dropdowns.forEach(dropdown => {
+    const selected = dropdown.querySelector('.dropdown-selected');
+    const options = dropdown.querySelector('.dropdown-options');
+    const items = dropdown.querySelectorAll('.dropdown-option');
+
+    // Toggle dropdown open/close
+    selected.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent triggering the document click listener
+        // Close other dropdowns
+        document.querySelectorAll('.dropdown-options').forEach(opt => {
+            if (opt !== options) {
+                opt.style.display = 'none';
+            }
+        });
+
+        options.style.display = options.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Set selected option, make reset-filter active, and reload table
+    items.forEach(item => {
+        item.addEventListener('click', function() {
+            selected.textContent = this.textContent;
+            options.style.display = 'none';
+            resetFilter.classList.add('active');
+            reloadTable(); // Reload the table with new filter
+        });
+    });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-options').forEach(opt => {
+            opt.style.display = 'none';
+        });
+    }
+});
+
+// Reset all dropdowns to default when reset-filter is clicked and reload table
+resetFilter.addEventListener('click', function() {
+    if (resetFilter.classList.contains('active')) {
+        dropdowns.forEach(dropdown => {
+            const selected = dropdown.querySelector('.dropdown-selected');
+            const defaultValue = selected.getAttribute('data-default');
+            selected.textContent = defaultValue;
+        });
+        resetFilter.classList.remove('active');
+        reloadTable(); // Reload the table with default filter
+    }
+});
 
   const checkboxes = document.querySelectorAll('.therapist-info-patient-checkbox');
 
@@ -101,58 +152,6 @@ document.addEventListener('DOMContentLoaded', function() {
           });
       }, 1000); // Mock delay of 1 second
   }
-
-  dropdowns.forEach(dropdown => {
-      const selected = dropdown.querySelector('.dropdown-selected');
-      const options = dropdown.querySelector('.dropdown-options');
-      const items = dropdown.querySelectorAll('.dropdown-option');
-
-      // Toggle dropdown open/close
-      selected.addEventListener('click', function(event) {
-          event.stopPropagation(); // Prevent triggering the document click listener
-          // Close other dropdowns
-          document.querySelectorAll('.dropdown-options').forEach(opt => {
-              if (opt !== options) {
-                  opt.style.display = 'none';
-              }
-          });
-
-          options.style.display = options.style.display === 'block' ? 'none' : 'block';
-      });
-
-      // Set selected option, make reset-filter active, and reload table
-      items.forEach(item => {
-          item.addEventListener('click', function() {
-              selected.textContent = this.textContent;
-              options.style.display = 'none';
-              resetFilter.classList.add('active');
-              reloadTable(); // Reload the table with new filter
-          });
-      });
-  });
-
-  // Close dropdown when clicking outside
-  document.addEventListener('click', function(event) {
-      if (!event.target.closest('.dropdown')) {
-          document.querySelectorAll('.dropdown-options').forEach(opt => {
-              opt.style.display = 'none';
-          });
-      }
-  });
-
-  // Reset all dropdowns to default when reset-filter is clicked and reload table
-  resetFilter.addEventListener('click', function() {
-      if (resetFilter.classList.contains('active')) {
-          dropdowns.forEach(dropdown => {
-              const selected = dropdown.querySelector('.dropdown-selected');
-              const defaultValue = selected.getAttribute('data-default');
-              selected.textContent = defaultValue;
-          });
-          resetFilter.classList.remove('active');
-          reloadTable(); // Reload the table with default filter
-      }
-  });
-
   // Initial setup to set default values and load table
   reloadTable(); // Load table with default values
 });
@@ -183,10 +182,12 @@ document.addEventListener('DOMContentLoaded', function() {
         image: '/assets/doc2.jpeg',
         certificates: [
             {
+                id: 0,
                 image: '/assets/certification2.png',
                 description: "The Psychiatrist's Guide to Population Management of Diabetes"
             },
             {
+                id: 1,
                 image: '/assets/certification1.png',
                 description: 'DOCTORATE OF PSYCHIATRY'
             }
@@ -289,7 +290,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
             <div class="therapist-info-buttons">
-                <button class="therapist-info-edit-btn" onclick="editTherapist()">Edit</button>
                 <button class="therapist-info-delete-btn" onclick="deleteTherapist()">Delete</button>
             </div>
         `;
@@ -303,12 +303,14 @@ document.addEventListener('DOMContentLoaded', function() {
         certificatesContainer.innerHTML = '<h4>Certificate (' + data.certificates.length + ')</h4>'; // Add header
         data.certificates.forEach(cert => {
             const certElement = `
-                <div class="therapist-info-certificate-item">
-                    <img src="${cert.image}" alt="Certificate Image">
+                <div class="therapist-info-certificate-item" onclick="triggerFileUpload(${cert.id})">
+                    <img src="${cert.image}" class="certificate-img" alt="Certificate Image" id="cert${cert.id}"  onmouseenter="showPreview(${cert.id})" onmouseleave="hidePreview()">
                     <p>${cert.description}</p>
                 </div>
             `;
-            certificatesContainer.innerHTML += certElement;
+            certificatesContainer.innerHTML += (certElement + `<input type="file" id="file-upload" style="display:none;" accept="image/*" onchange="handleFileChange(event)"><div id="image-preview-popup" class="image-preview-popup">
+            <img id="preview-image" src="" alt="Image Preview">
+        </div>` );
         });
     
         // Clear and Populate Assigned and Unassigned Patients
@@ -401,31 +403,102 @@ function confirmChanges(field) {
         const newEmail = emailInput.value.trim();
 
         if (newEmail !== originalEmail) {
-            const confirmation = confirm("Do you want to save the changes?");
-            if (confirmation) {
-                originalEmail = newEmail; // Save the new email
-            }
+            confirmModal.show(
+                "Save the changes?",
+                "After saving the brief would be changed permenantly.",
+                () => {
+                    originalEmail = newEmail;
+                    
+                    confirmModal.hide();
+                },
+                () => {
+                   
+                },
+                "Ok",
+                "Cancel"
+            );
         }
 
-        // Revert to text mode for email
         document.getElementById('email-input').parentNode.innerHTML = `<a href="mailto:${originalEmail}" id="email-text">${originalEmail}</a> <span class="edit-icon" onclick="toggleEdit('email')">✏️</span>`;
+
+        // Revert to text mode for email
+        
     } else if (field === 'brief') {
         const briefInput = document.getElementById('brief-textarea');
         const newBrief = briefInput.value.trim();
-        console.log(newBrief)
+
         if (newBrief !== originalBriefText) {
-            const confirmation = confirm("Do you want to save the changes?");
-            if (confirmation) {
-                originalBriefText = newBrief; // Save the new brief text
-            }
+            confirmModal.show(
+                "Save the changes?",
+                "After saving the brief would be changed permenantly.",
+                () => {
+                    originalBriefText = newBrief;
+                    confirmModal.hide();
+                },
+                () => {
+                   
+                },
+                "Ok",
+                "Cancel"
+            );
         }
 
-        console.log(originalBriefText);
-
-        // Revert to text mode for brief
         document.getElementById('brief-text').innerHTML = `${originalBriefText}`;
+        
+
+        // // Revert to text mode for brief
+        // document.getElementById('brief-text').innerHTML = `${originalBriefText}`;
     }
 }
+
+let currentImgId = '';
+
+function triggerFileUpload(imgId) {
+    // Save the ID of the image being replaced
+    currentImgId = imgId;
+
+    // Trigger the hidden file input click
+    document.getElementById('file-upload').click();
+}
+
+function handleFileChange(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            // Update the image src with the new file content
+            document.getElementById(`cert${currentImgId}`).src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+}
+
+
+function showPreview(imgId) {
+    const imgElement = document.getElementById(`cert${imgId}`);
+    const previewPopup = document.getElementById('image-preview-popup');
+    const previewImage = document.getElementById('preview-image');
+
+    // Set the source of the preview image to the source of the hovered image
+    previewImage.src = imgElement.src;
+
+    // Get the position of the hovered image and set the position of the preview popup
+    const rect = imgElement.getBoundingClientRect();
+    previewPopup.style.top = (rect.top + window.scrollY) + 'px'; // Align top with the image
+    previewPopup.style.left = (rect.right + window.scrollX + 10) + 'px'; // Position to the right with a small offsetleft with the image
+
+    // Show the preview popup
+    previewPopup.style.display = 'block';
+}
+
+function hidePreview() {
+    // Hide the preview popup
+    const previewPopup = document.getElementById('image-preview-popup');
+    previewPopup.style.display = 'none';
+}
+
 
     
     

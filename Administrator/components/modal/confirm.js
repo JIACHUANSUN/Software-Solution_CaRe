@@ -1,17 +1,20 @@
 const confirmModal = (() => {
   // Create modal elements dynamically
   const modalHTML = `
-      <div class="modal-wrap">
+      <div class="modal-wrap" style="position: absolute; width: 450px">
           <div class="modal-content">
               <div class="modal-header">
-                  <h2 class="modal-title">Confirmation</h2>
+                  <h2 class="modal-title" style="font-size: 1rem" id="confirm-modal-message">Message</h2>
               </div>
               <div class="modal-body">
-                  <p id="confirm-modal-message">Do you want to save the changes?</p>
-                  <div class="modal-buttons">
-                      <button id="confirm-ok-btn" class="modal-btn">OK</button>
-                      <button id="confirm-cancel-btn" class="modal-btn">Cancel</button>
+                  <div class="modal-icon-message">
+                      <span class="modal-icon">⚠️</span>
+                      <p class="modal-message" id="confirm-modal-warning" style="display: none; color: red;"></p>
                   </div>
+                  <div class="modal-buttons">
+                        <button id="confirm-ok-btn" class="modal-btn alert">OK</button>
+                        <button id="confirm-cancel-btn" class="modal-btn">Cancel</button>
+                    </div>
               </div>
           </div>
       </div>
@@ -26,9 +29,18 @@ const confirmModal = (() => {
   document.body.appendChild(modalContainer);
 
   // Function to show the modal
-  function show(message, onConfirm, onCancel, okText = 'OK', cancelText = 'Cancel') {
+  function show(message, warning = '', onConfirm, onCancel, okText = 'OK', cancelText = 'Cancel') {
       // Set the message
       document.getElementById('confirm-modal-message').textContent = message;
+
+      // Set the warning message, if provided
+      const warningElement = document.getElementById('confirm-modal-warning');
+      if (warning) {
+          warningElement.textContent = warning;
+          warningElement.style.display = 'block';
+      } else {
+          warningElement.style.display = 'none';
+      }
 
       // Set button text
       document.getElementById('confirm-ok-btn').textContent = okText;
@@ -40,6 +52,7 @@ const confirmModal = (() => {
       // Set up event listeners for buttons
       document.getElementById('confirm-ok-btn').onclick = function() {
           if (onConfirm) onConfirm();
+          hide();
       };
 
       document.getElementById('confirm-cancel-btn').onclick = function() {
@@ -59,18 +72,3 @@ const confirmModal = (() => {
       hide
   };
 })();
-
-// Example usage:
-confirmModal.show(
-  "Are you sure you want to proceed?",
-  () => {
-      console.log("Confirmed!");
-      // Additional logic for confirmation
-  },
-  () => {
-      console.log("Cancelled!");
-      // Additional logic for cancellation
-  },
-  "Proceed",  // Custom OK text
-  "Abort"     // Custom Cancel text
-);

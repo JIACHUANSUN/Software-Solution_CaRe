@@ -76,3 +76,43 @@
 .modal-close:hover {
   color: rgba(0, 0, 0, 0.75);
 }
+
+.modal-icon-message {
+  display: flex;
+}
+
+.modal-message {
+  flex: 1;
+}
+
+.modal-btn {
+  background-color: transparent;
+  color: blue; /* Default blue color */
+  padding: 10px 20px;
+  border: 1px solid blue; /* Blue border for default look */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.modal-btn:hover {
+  background-color: rgba(0, 0, 255, 0.1); /* Light blue background on hover */
+  color: blue; /* Ensure text color remains blue */
+}
+
+.modal-btn.alert {
+  color: red; /* Red color for alert button */
+  border: 1px solid red; /* Red border for alert button */
+}
+
+.modal-btn.alert:hover {
+  background-color: rgba(255, 0, 0, 0.1); /* Light red background on hover */
+  color: red; /* Ensure text color remains red */
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+  margin-top: 20px;
+}
