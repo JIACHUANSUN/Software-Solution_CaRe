@@ -237,7 +237,7 @@
     <span>Privacy Policy</span>
     <span style="margin-left: 3rem;">Terms of Use</span>
   </div>
-  <div id="therapost-editor" class="modal-mask">
+  <div id="therapist-editor" class="modal-mask">
     <div class="modal-wrap">
         <div class="modal-content">
             <button class="modal-close" onclick="hideModal()">✖</button>
@@ -253,15 +253,26 @@
                                 <img src="/assets/doc2.jpeg" alt="Therapist Picture">
                             </div>
                             <div class="therapist-info-content">
-                                <h4 class="therapist-info-name">Therapist ID: 001<br>Olivia Turner, M.D.</h4>
-                                <p>Email: <a href="mailto:ademsmith123@care.com">ademsmith123@care.com</a></p>
-                                <p>Professional Field: Early Intervention records</p>
-                                <p>Brief: Early intervention records Early intervention Early intervention records Early intervention Early</p>
-                                <div class="therapist-info-buttons">
-                                    <button class="therapist-info-edit-btn">Edit</button>
-                                    <button class="therapist-info-delete-btn">Delete</button>
+                                <div class="info-row">
+                                    <p class="info-title">Email:</p>
+                                    <p class="info-value">
+                                        <a href="mailto:ademsmith123@care.com">ademsmith123@care.com</a>
+                                        <span class="edit-icon" onclick="toggleEdit('email')">✏️</span>
+                                    </p>
+                                </div>
+                                <div class="info-row">
+                                    <p class="info-title">Field:</p>
+                                    <p class="info-value">Early Intervention records</p>
+                                </div>
+                                <div class="info-row">
+                                    <p class="info-title">Brief:</p>
+                                    <p class="info-value" id="brief-text">
+                                        Early intervention records Early intervention Early intervention records Early intervention Early
+                                        <span class="edit-icon" onclick="toggleEdit('brief')">✏️</span>
+                                    </p>
                                 </div>
                             </div>
+                            
                         </div>
             
                         <!-- Assigned Patient Section -->
@@ -389,7 +400,7 @@
             </div>
         </div>
     </div>
-</div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
   <script src="index.js"></script>
 </body>

@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
                   <td>${data.field}</td>
                   <td><span class="status ${data.status.toLowerCase()}">${data.status}</span></td>
                   <td style="max-width: 12rem">
-                    <button class="operation-btn" onClick="showModal()">Edit</button>
+                    <button class="operation-btn" onClick="showModal(${data.id})">Edit</button>
                     <button class="operation-btn">Check</button>
                   </td>
               `;
@@ -157,21 +157,277 @@ document.addEventListener('DOMContentLoaded', function() {
   reloadTable(); // Load table with default values
 });
 
-    const editor = document.getElementById('therapost-editor');
+    const editor = document.getElementById('therapist-editor');
     function hideModal()
     {
         if (!editor)
-        editor = document.getElementById('therapost-editor');
+        editor = document.getElementById('therapist-editor');
         editor.style.display = 'none';
     }
 
-    function showModal()
+    function showModal(data)
     {
+        console.log(data);
         if (!editor)
-        editor = document.getElementById('therapost-editor');
+        editor = document.getElementById('therapist-editor');
         editor.style.display = 'block';
     }
 
-    showModal();
+
+    const therapistData = {
+        id: '001',
+        name: 'Olivia Turner, M.D.',
+        email: 'oliviaturner@care.com',
+        field: 'Early Intervention records',
+        brief: 'Specializes in early intervention for children with developmental delays.',
+        image: '/assets/doc2.jpeg',
+        certificates: [
+            {
+                image: '/assets/certification2.png',
+                description: "The Psychiatrist's Guide to Population Management of Diabetes"
+            },
+            {
+                image: '/assets/certification1.png',
+                description: 'DOCTORATE OF PSYCHIATRY'
+            }
+        ],
+        assignedPatients: [
+            { id: '101', name: 'John Doe', image: '/assets/head.jpeg', selected: true },
+            { id: '102', name: 'Jane Smith', image: '/assets/head.jpeg', selected: true },
+            // Add more assigned patients if needed
+        ],
+        unassignedPatients: [
+            { id: '103', name: 'Alice Johnson', image: '/assets/head.jpeg', selected: false },
+            { id: '104', name: 'Robert Brown', image: '/assets/head.jpeg', selected: false },
+            { id: '105', name: 'Emily Davis', image: '/assets/head.jpeg', selected: false },
+            { id: '106', name: 'Michael White', image: '/assets/head.jpeg', selected: false },
+            { id: '107', name: 'Sarah Wilson', image: '/assets/head.jpeg', selected: false },
+            { id: '108', name: 'David Lee', image: '/assets/head.jpeg', selected: false },
+            { id: '109', name: 'Sophia Taylor', image: '/assets/head.jpeg', selected: false },
+            { id: '110', name: 'Chris Harris', image: '/assets/head.jpeg', selected: false },
+            { id: '111', name: 'Megan Clark', image: '/assets/head.jpeg', selected: false },
+            { id: '112', name: 'James Hall', image: '/assets/head.jpeg', selected: false },
+            { id: '113', name: 'Natalie Allen', image: '/assets/head.jpeg', selected: false },
+            { id: '114', name: 'Ryan King', image: '/assets/head.jpeg', selected: false },
+            { id: '115', name: 'Laura Scott', image: '/assets/head.jpeg', selected: false },
+            { id: '116', name: 'Joshua Young', image: '/assets/head.jpeg', selected: false },
+            { id: '117', name: 'Zoe Walker', image: '/assets/head.jpeg', selected: false },
+            { id: '118', name: 'Anthony Green', image: '/assets/head.jpeg', selected: false },
+            { id: '119', name: 'Jessica Adams', image: '/assets/head.jpeg', selected: false },
+            { id: '120', name: 'Jacob Baker', image: '/assets/head.jpeg', selected: false },
+            { id: '121', name: 'Abigail Turner', image: '/assets/head.jpeg', selected: false },
+            { id: '122', name: 'Daniel Martinez', image: '/assets/head.jpeg', selected: false }
+        ],
+        groups: [
+            {
+                name: 'Expert group',
+                numMembers: 18,
+                authority: [
+                    'View patient information',
+                    'Edit patient data',
+                    'Create a patient group'
+                ]
+            },
+            {
+                name: 'Expert group',
+                numMembers: 18,
+                authority: [
+                    'View patient information',
+                    'Edit patient data',
+                    'Create a patient group'
+                ]
+            }
+        ]
+    };
+    
+
+    function populateTherapistForm(data) {
+        // Update the Modal Title with Therapist's Name
+        const modalTitle = document.querySelector('.modal-title');
+        modalTitle.textContent = `Therapist Details - ${data.name}`;
+    
+        // Clear and Populate Therapist Info
+        const therapistInfoContainer = document.querySelector('.therapist-info-content');
+        therapistInfoContainer.innerHTML = ''; // Clear existing content
+
+        const fieldOptions = [
+            'Early Intervention records',
+            'Pediatrics',
+            'Psychiatry',
+            'Neurology',
+            'Counseling'
+        ];
+        
+
+        const fieldOptionsHTML = fieldOptions.map(option => {
+            const selected = option === data.field ? 'selected' : '';
+            return `<option value="${option}" ${selected}>${option}</option>`;
+        }).join('');
+    
+        const therapistInfoContent = `
+            <h4 class="therapist-info-name">Therapist ID: ${data.id}<br>${data.name}</h4>
+            <div class="info-row">
+                <p class="info-title">Email:</p>
+                <p class="info-value">
+                    <a href="mailto:${data.email}" id="email-text">${data.email}</a>
+                    <span class="edit-icon" onclick="toggleEdit('email')">✏️</span>
+                </p>
+            </div>
+            <div class="info-row">
+                <p class="info-title">Field:</p>
+                <p class="info-value" id="field-text">
+                    <select id="field-select" class="styled-select">
+                        ${fieldOptionsHTML}
+                    </select>
+                </p>
+            </div>
+            <div class="info-row">
+                <p class="info-title">Brief:</p>
+                <div class="info-value">
+                    <p id="brief-text" style="width: 100%">${data.brief}</p>
+                    <span class="edit-icon" onclick="toggleEdit('brief')">✏️</span>
+                </div>
+            </div>
+            <div class="therapist-info-buttons">
+                <button class="therapist-info-edit-btn" onclick="editTherapist()">Edit</button>
+                <button class="therapist-info-delete-btn" onclick="deleteTherapist()">Delete</button>
+            </div>
+        `;
+
+        therapistInfoContainer.innerHTML = therapistInfoContent;
+        document.querySelector('.therapist-info-image img').src = data.image;
+    
+        // Clear and Populate Certificates
+        const certificatesContainer = document.querySelector('.therapist-info-certificates');
+        certificatesContainer.innerHTML = ''; // Clear existing content
+        certificatesContainer.innerHTML = '<h4>Certificate (' + data.certificates.length + ')</h4>'; // Add header
+        data.certificates.forEach(cert => {
+            const certElement = `
+                <div class="therapist-info-certificate-item">
+                    <img src="${cert.image}" alt="Certificate Image">
+                    <p>${cert.description}</p>
+                </div>
+            `;
+            certificatesContainer.innerHTML += certElement;
+        });
+    
+        // Clear and Populate Assigned and Unassigned Patients
+        const patientListContainer = document.querySelector('.therapist-info-patient-list');
+        patientListContainer.innerHTML = ''; // Clear existing content
+    
+        const allPatients = [...data.assignedPatients, ...data.unassignedPatients];
+        allPatients.forEach(patient => {
+            const isChecked = patient.selected ? 'checked' : '';
+            const patientElement = `
+                <div class="therapist-info-patient-item ${patient.selected ? 'patient-item-selected' : ''}">
+                    <img src="${patient.image}" alt="Patient Picture">
+                    <div class="therapist-info-patient-info">
+                        <h4>Patient ID: ${patient.id}</h4>
+                        <h4>${patient.name}</h4>
+                    </div>
+                    <input type="checkbox" class="therapist-info-patient-checkbox" ${isChecked}>
+                </div>
+            `;
+            patientListContainer.innerHTML += patientElement;
+        });
+    
+        // Clear and Populate Therapist Group
+        const groupContainer = document.querySelector('.therapist-info-group');
+        groupContainer.innerHTML = ''; // Clear existing content
+        data.groups.forEach(group => {
+            const groupElement = `
+                <div class="therapist-info-group-item">
+                    <div class="group-details">
+                        <div>
+                            <h4>${group.name}</h4>
+                            <p>Num of Member: ${group.numMembers}</p>
+                        </div>
+                        <div class="group-icon">
+                            <img src="/assets/patient_male.png" alt="Group Icon">
+                        </div>
+                    </div>
+                    <div class="group-authority">
+                        <h4>Authority:</h4>
+                        ${group.authority.map(auth => `<p><a href="#">${auth}</a></p>`).join('')}
+                    </div>
+                </div>
+            `;
+            groupContainer.innerHTML += groupElement;
+        });
+    }
+    
+    // Call the function with the mock data
+    populateTherapistForm(therapistData);
+
+    let originalEmail = ""; // To store the original email
+let originalBriefText = ""; // To store the original brief text
+
+function toggleEdit(field) {
+    if (field === 'email') {
+        const emailValue = document.getElementById('email-text');
+        const emailContainer = emailValue.parentNode;
+
+        if (emailValue.tagName === 'A') {
+            // Save the original email
+            originalEmail = emailValue.textContent.trim();
+            
+            // Switch to input mode for email
+            emailContainer.innerHTML = `<input type="email" id="email-input" value="${originalEmail}" onblur="confirmChanges('email')" class="editable-input">`;
+        } else {
+            // Switch back to text mode for email
+            emailContainer.innerHTML = `<a href="mailto:${originalEmail}" id="email-text">${originalEmail}</a> <span class="edit-icon" onclick="toggleEdit('email')">✏️</span>`;
+        }
+    } else if (field === 'brief') {
+        const briefText = document.getElementById('brief-text');
+        const briefValue = briefText.textContent.trim();
+
+        if (!briefText.querySelector('textarea')) {
+            // Save the original brief text
+            originalBriefText = briefValue;
+            
+            // Switch to textarea mode for brief
+            briefText.innerHTML = `<textarea id="brief-textarea" class="editable-textarea" onblur="confirmChanges('brief')">${originalBriefText}</textarea>`;
+        } else {
+            // Switch back to text mode for brief
+            briefText.innerHTML = `${originalBriefText}`;
+        }
+    }
+}
+
+
+function confirmChanges(field) {
+    if (field === 'email') {
+        const emailInput = document.getElementById('email-input');
+        const newEmail = emailInput.value.trim();
+
+        if (newEmail !== originalEmail) {
+            const confirmation = confirm("Do you want to save the changes?");
+            if (confirmation) {
+                originalEmail = newEmail; // Save the new email
+            }
+        }
+
+        // Revert to text mode for email
+        document.getElementById('email-input').parentNode.innerHTML = `<a href="mailto:${originalEmail}" id="email-text">${originalEmail}</a> <span class="edit-icon" onclick="toggleEdit('email')">✏️</span>`;
+    } else if (field === 'brief') {
+        const briefInput = document.getElementById('brief-textarea');
+        const newBrief = briefInput.value.trim();
+        console.log(newBrief)
+        if (newBrief !== originalBriefText) {
+            const confirmation = confirm("Do you want to save the changes?");
+            if (confirmation) {
+                originalBriefText = newBrief; // Save the new brief text
+            }
+        }
+
+        console.log(originalBriefText);
+
+        // Revert to text mode for brief
+        document.getElementById('brief-text').innerHTML = `${originalBriefText}`;
+    }
+}
+
+    
+    
 
 

@@ -454,6 +454,39 @@
   padding: 0 20px 0 20px; /* Adds padding inside the content area */
   overflow-y: auto; /* Allows scrolling if content overflows */
   position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-row {
+  display: flex;
+  align-items: start;
+  gap: 5px;
+}
+
+.info-title {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 40px;
+}
+
+.info-value {
+  flex: 2;
+  display: flex;
+  align-items: end;
+}
+
+.edit-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #007bff;
+}
+
+.info-value input {
+  width: 100%;
+  padding: 5px;
+  margin-left: 10px;
 }
 
 .therapist-info-name {
@@ -464,7 +497,7 @@
 }
 
 .therapist-info-content p {
-  margin: 5px 0;
+  margin: 2px 0;
   color: #333;
   font-size: 14px;
   line-height: 1.4;
@@ -474,6 +507,84 @@
   color: #0F67FE;
   text-decoration: none;
 }
+
+.editable-input {
+  border: none; /* Remove default border */
+  border-bottom: 1px solid #ccc; /* Add only a bottom border */
+  width: auto; /* Use 'auto' to respect the parent width */
+  padding: 0; /* Remove any default padding */
+  font-size: inherit; /* Inherit font size to match the surrounding text */
+  font-family: inherit; /* Inherit font family to keep consistent appearance */
+  background-color: transparent; /* Make background transparent */
+  outline: none; /* Remove default outline on focus */
+  margin: 0; /* Remove margin to keep it aligned */
+  display: inline-block; /* Keep it inline to fit in line with the text */
+  height: auto; /* Ensure height matches the surrounding text */
+}
+
+
+.editable-input:focus {
+  border-bottom-color: #007bff; /* Change border color on focus to indicate edit mode */
+}
+
+.editable-textarea {
+  border: none; /* Remove default border */
+  border-bottom: 1px solid #ccc; /* Add only a bottom border */
+  width: 100%; /* Full width to match the containing element */
+  padding: 0; /* Remove default padding */
+  font-size: inherit; /* Inherit font size to match the surrounding text */
+  font-family: inherit; /* Inherit font family to keep consistent appearance */
+  background-color: transparent; /* Make background transparent */
+  outline: none; /* Remove default outline on focus */
+  margin: 0; /* Remove margin to keep it aligned */
+  resize: none; /* Prevent resizing of the textarea */
+  overflow: hidden; /* Hide overflow to maintain one-line appearance */
+  height: auto; /* Adjust height dynamically if needed */
+  line-height: 1.5; /* Adjust line height for readability */
+}
+
+.editable-textarea:focus {
+  border-bottom-color: #007bff; /* Change border color on focus to indicate edit mode */
+}
+
+.styled-select {
+  border: none; /* Remove default border */
+  border-bottom: none; /* Add only a bottom border */
+  width: 100%; /* Full width to match the containing element */
+  padding: 0; /* Remove default padding */
+  font-size: inherit; /* Inherit font size to match surrounding text */
+  font-family: inherit; /* Inherit font family to maintain consistency */
+  background-color: transparent; /* Transparent background */
+  outline: none; /* Remove outline on focus */
+  margin: 0; /* Remove margin to keep aligned */
+  appearance: none; /* Remove default dropdown arrow to control styling */
+}
+
+.styled-select:focus {
+  border-bottom: 1px solid #ccc; /* Add only a bottom border */
+  border-bottom-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove focus outline */
+}
+
+.styled-select::-ms-expand {
+  display: none; /* Hide default arrow in Internet Explorer */
+}
+
+/* Add a custom arrow indicator */
+.styled-select-wrapper {
+  position: relative;
+}
+
+.styled-select-wrapper::after {
+  content: '▼'; /* Custom dropdown arrow */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none; /* Allow clicks through to the select */
+  color: #999;
+}
+
 
 .therapist-info-content a:hover {
   text-decoration: underline;
