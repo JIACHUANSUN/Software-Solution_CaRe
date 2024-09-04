@@ -13,7 +13,28 @@
           justify-content: center;
           align-items: center;
           height: 100vh;
+          position: relative;
+          margin: 0;
+          overflow: hidden; /* Prevents scrollbars */
         }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('assets/login_bg.png'); /* Adjust the path as needed */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            opacity: 0.2; /* Transparency level */
+            z-index: -1; /* Background is behind the content */
+        }
+
+        
         .logo {
           border-radius: 10px;
         }
@@ -126,11 +147,7 @@
         </div>
     </div>
 
-    <script>
-      function resetState(e) {
-        console.log(e);
-      }
-
+    <script>     
       function validateForm() {
           const username = document.getElementById('username');
           const password = document.getElementById('password');
@@ -178,18 +195,18 @@
     }
 
       function removeErrorOnInput(event) {
-            const input = event.target;
-            const errorSpan = document.getElementById(`${input.id}-error`);
+        const input = event.target;
+        const errorSpan = document.getElementById(`${input.id}-error`);
 
-            if (input.value.trim() !== '') {
-                input.classList.remove('error');
-                errorSpan.style.display = 'none';
-            }
+        if (input.value.trim() !== '') {
+            input.classList.remove('error');
+            errorSpan.style.display = 'none';
         }
+      }
 
-        // Adding event listeners to input fields to handle changes
-        document.getElementById('username').addEventListener('input', removeErrorOnInput);
-        document.getElementById('password').addEventListener('input', removeErrorOnInput);
+      // Adding event listeners to input fields to handle changes
+      document.getElementById('username').addEventListener('input', removeErrorOnInput);
+      document.getElementById('password').addEventListener('input', removeErrorOnInput);
   </script>
 </body>
 </html>

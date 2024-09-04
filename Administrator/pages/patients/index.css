@@ -1,3 +1,19 @@
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('assets/login_bg.png'); /* Adjust the path as needed */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  opacity: 0.2; /* Transparency level */
+  z-index: -1; /* Background is behind the content */
+}
+
 .list-name {
   font-size: 2rem;
   margin: .5rem;
