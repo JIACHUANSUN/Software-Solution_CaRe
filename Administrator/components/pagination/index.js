@@ -6,6 +6,7 @@ class Pagination {
             totalPages: 1,
             currentPage: 1,
             onPageChange: () => {},
+            maxVisibleButtons: 9, // Maximum number of page buttons to display
             ...config // Override defaults with user-provided config
         };
         
@@ -21,13 +22,54 @@ class Pagination {
 
     // Render pagination HTML
     render() {
-        const { totalPages, currentPage } = this.config;
+        const { totalPages, currentPage, maxVisibleButtons } = this.config;
         let html = '';
 
         html += `<button class="pagination-prev" ${currentPage === 1 ? 'disabled' : ''}>Prev</button>`;
 
-        for (let i = 1; i <= totalPages; i++) {
-            html += `<button class="pagination-item ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+        if (totalPages <= maxVisibleButtons) {
+            // If total pages are less than or equal to max visible buttons, show all
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<button class="pagination-item ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+            }
+        } else {
+            // Show the first page
+            // calculate display range
+            let half = Math.floor(maxVisibleButtons / 2);
+            let startPage = Math.max(1, currentPage - half);
+            let endPage = Math.min(totalPages, currentPage + half);
+
+            // adjust start page and current page 
+            if (currentPage <= half) {
+                endPage = Math.min(totalPages, maxVisibleButtons);
+            } else if (currentPage > totalPages - half) {
+                startPage = Math.max(1, totalPages - maxVisibleButtons + 1);
+            }
+
+            // first page
+            html += `<button class="pagination-item ${1 === currentPage ? 'active' : ''}" data-page="1">1</button>`;
+
+            // display ...
+            if (startPage > 2) {
+                html += `<span class="pagination-ellipsis">...</span>`;
+            }
+
+            // show the pages in range
+            for (let i = startPage; i <= endPage; i++) {
+                if (i > 1 && i < totalPages) { // ignore the first and last page
+                    html += `<button class="pagination-item ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+                }
+            }
+
+            // display ...
+            if (endPage < totalPages - 1) {
+                html += `<span class="pagination-ellipsis">...</span>`;
+            }
+
+            // show last page
+            if (totalPages > 1) {
+                html += `<button class="pagination-item ${totalPages === currentPage ? 'active' : ''}" data-page="${totalPages}">${totalPages}</button>`;
+            }
         }
 
         html += `<button class="pagination-next" ${currentPage === totalPages ? 'disabled' : ''}>Next</button>`;
@@ -60,5 +102,13 @@ class Pagination {
         this.config.currentPage = newPage;
         this.render();
         this.config.onPageChange(newPage);
+    }
+
+    updateTotalPages(newTotalPages) {
+        this.config.totalPages = newTotalPages;
+        if (this.config.currentPage > newTotalPages) {
+            this.config.currentPage = newTotalPages; // Adjust current page if out of range
+        }
+        this.render();
     }
 }

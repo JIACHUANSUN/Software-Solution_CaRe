@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const resetFilter = document.querySelector('.reset-filter');
   const spinner = document.getElementById('loading-spinner');
 
-console.log(dropdowns)
   dropdowns.forEach(dropdown => {
     const selected = dropdown.querySelector('.dropdown-selected');
     const options = dropdown.querySelector('.dropdown-options');
