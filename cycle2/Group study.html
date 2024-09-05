@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Group Study</title>
+  <link rel="stylesheet" href="styles8.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Group Study Management</h1>
+    <div class="group-list">
+      <h2>Available Patients</h2>
+      <ul id="patient-list">
+        <!-- 患者列表 -->
+      </ul>
+    </div>
+
+    <div class="group-info">
+      <h2>Group Information</h2>
+      <p>Group Name: <span id="group-name"></span></p>
+      <p>Group Theme: <span id="group-theme"></span></p>
+      <textarea id="group-notes" placeholder="Enter group notes here..."></textarea>
+      <button id="save-notes">Save Notes</button>
+    </div>
+
+    <div class="schedule-meeting">
+      <h2>Schedule Meeting</h2>
+      <label for="meeting-time">Meeting Time:</label>
+      <input type="datetime-local" id="meeting-time">
+      <button id="schedule-btn">Schedule</button>
+    </div>
+  </div>
+</body>
+</html>
